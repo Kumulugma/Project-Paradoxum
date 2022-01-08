@@ -82,4 +82,5 @@ wp-content/languages/wpml/
 # Custom files
 /vendor
 
-
+# Antivirus
+wp-includes/js/wp-emoji-release.min.js
