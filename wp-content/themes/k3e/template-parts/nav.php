@@ -30,15 +30,16 @@
                 <?= get_field('projects_header', 10) ?>
             </a>
         </li>
+        <?php /*
         <li class="sections-nav-item">
             <a href="#section-06" class="nav-link sections-nav-link goto-section">
                 <span class="sections-nav-counter">06</span>
                 <?= get_field('testimonials_header', 10) ?>
             </a>
-        </li>
+        </li> */ ?>
         <li class="sections-nav-item">
             <a href="#section-07" class="nav-link sections-nav-link goto-section">
-                <span class="sections-nav-counter">07</span>
+                <span class="sections-nav-counter">06</span>
                 <?= get_field('contact_header', 10) ?>
             </a>
         </li>

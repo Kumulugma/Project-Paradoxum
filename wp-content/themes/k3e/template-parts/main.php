@@ -12,7 +12,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-4">
                         <a class="section-next goto-section" href="#section-02">
-                            <span class="section-next-counter">1/7</span>
+                            <span class="section-next-counter">1/6</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-03">
-                            <span class="section-next-counter">2/7</span>
+                            <span class="section-next-counter">2/6</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-04">
-                            <span class="section-next-counter">3/7</span>
+                            <span class="section-next-counter">3/6</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-05">
-                            <span class="section-next-counter">4/7</span>
+                            <span class="section-next-counter">4/6</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -140,13 +140,14 @@
                         </div>
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
-                        <a class="section-next goto-section" href="#section-06">
-                            <span class="section-next-counter">5/7</span>
+                        <a class="section-next goto-section" href="#section-07">
+                            <span class="section-next-counter">5/6</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
                     </div>
                 </section>
+                <?php /*
                 <section id="section-06" class="section animation">
                     <div class="section-body">
                         <h2 class="section-title animation-translate-overline animation-item-1"><?= get_field('testimonials_header', 10) ?></h2>
@@ -219,12 +220,12 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-07">
-                            <span class="section-next-counter">6/7</span>
+                            <span class="section-next-counter">6/6</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
                     </div>
-                </section>
+                </section> */?>
                 <section id="section-07" class="section animation">
                     <div class="section-body">
                         <h2 class="section-title animation-translate-overline animation-item-1"><?= get_field('contact_header', 10) ?></h2>
@@ -264,7 +265,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-5">
                         <span class="section-next goto-section">
-                            <span class="section-next-counter">7/7</span>
+                            <span class="section-next-counter">6/6</span>
                         </span>
                     </div>
                 </section>

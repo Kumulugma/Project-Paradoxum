@@ -32,7 +32,10 @@ if ($the_query->have_posts()) {
                             </div>
                             <div class="row flex-column-reverse flex-lg-row">
                                 <div class="col-12 col-lg-6">
-                                    <?= get_the_content() ?>
+                                    <p><?= get_the_content() ?></p>
+                                    <?php if(get_field('projects_url')) { ?>
+                                    <p><a href="<?=get_field('projects_url')?>"><button type="submit" class="btn btn-primary">Odwiedź</button></a></p>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <?php if (has_post_thumbnail(get_the_ID())): ?>
