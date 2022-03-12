@@ -208,7 +208,14 @@ class CSS extends Base {
 		}
 
 		$filepath_prefix = $this->_build_filepath_prefix( 'ucss' );
-		$url_tag = is_404() ? '404' : $request_url;
+
+		$url_tag = $request_url;
+		if ( is_404() ) {
+			$url_tag = '404';
+		}
+		elseif ( apply_filters( 'litespeed_ucss_per_pagetype', false ) ) {
+			$url_tag = Utility::page_type();
+		}
 
 		$vary = $this->cls( 'Vary' )->finalize_full_varies();
 		$filename = $this->cls( 'Data' )->load_url_file( $url_tag, $vary, 'ucss' );
@@ -514,62 +521,6 @@ class CSS extends Base {
 		$this->cls( 'Data' )->save_url( $url_tag, $vary, $type, $filecon_md5, dirname( $static_file ) );
 
 		Purge::add( strtoupper( $type ) . '.' . md5( $queue_k ) );
-	}
-
-	/**
-	 * Notify CCSS/UCSS
-	 *
-	 * @since 4.2
-	 */
-	public function notify( $type ) {
-		$post_data = json_decode( file_get_contents( 'php://input' ), true );
-		if( is_null( $post_data ) ) {
-			$post_data = $_POST;
-		}
-
-		if ( empty( $post_data[ 'data' ] ) ) {
-			Debug2::debug( '[CSS] ❌ empty data ' . $type );
-			return;
-		}
-
-		if ( empty( $post_data[ 'status' ] ) ) {
-			Debug2::debug( '[CSS] ❌ empty status' );
-			return;
-		}
-
-		Debug2::debug( '[CSS] Received notification [Type] ' . $type . ' [Count] ' . count( $post_data[ 'data' ] ) );
-
-		$this->_queue = $this->load_queue( $type );
-
-		// Clear existing queues
-		$valid_count = 0;
-		if ( $post_data[ 'status' ] == 'clear' ) {
-			foreach ( $post_data[ 'data' ] as $queue_k ) {
-				if ( ! empty( $this->_queue[ $queue_k ] ) ) {
-					unset( $this->_queue[ $queue_k ] );
-				}
-			}
-		}
-		// Append done list
-		elseif ( $post_data[ 'status' ] == 'done' ) {
-			foreach ( $post_data[ 'data' ] as $queue_k => $css ) {
-				if ( empty( $this->_queue[ $queue_k ] ) ) {
-					continue;
-				}
-
-				$this->_save_con( $type, $css, $queue_k );
-
-				unset( $this->_queue[ $queue_k ] );
-
-				$valid_count++;
-			}
-		}
-
-		$this->save_queue( $type, $this->_queue );
-
-		Debug2::debug( '[CSS] Saved result [valid count] ' . $valid_count );
-
-		return array( 'count' => $valid_count );
 	}
 
 	/**

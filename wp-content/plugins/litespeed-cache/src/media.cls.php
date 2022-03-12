@@ -272,7 +272,7 @@ class Media extends Root {
 		}
 		elseif ( $size_meta && $size_meta[ 'ori_saved' ] === 0 ){
 			echo GUI::pie_tiny( 0, 24,
-				__( 'Congratulation! Your file was already optmized', 'litespeed-cache' ),
+				__( 'Congratulation! Your file was already optimized', 'litespeed-cache' ),
 				'left'
 			);
 			echo sprintf( __( 'Orig %s', 'litespeed-cache' ), '<span class="litespeed-desc">' . __( '(no savings)', 'litespeed-cache' ) . '</span>' );
@@ -507,13 +507,7 @@ class Media extends Root {
 
 		// Include lazyload lib js and init lazyload
 		if ( $cfg_lazy || $cfg_iframe_lazy ) {
-			if ( ! defined( 'LITESPEED_GUEST_OPTM' ) && $this->conf( Base::O_MEDIA_LAZYJS_INLINE ) ) {
-				$lazy_lib = '<script data-no-optimize="1">' . File::read( LSCWP_DIR . self::LIB_FILE_IMG_LAZYLOAD ) . '</script>';
-			} else {
-				$lazy_lib_url = LSWCP_PLUGIN_URL . self::LIB_FILE_IMG_LAZYLOAD;
-				$lazy_lib = '<script src="' . $lazy_lib_url . '"></script>';
-			}
-
+			$lazy_lib = '<script data-no-optimize="1" defer>' . File::read( LSCWP_DIR . self::LIB_FILE_IMG_LAZYLOAD ) . '</script>';
 			$this->content = str_replace( '</body>', $lazy_lib . '</body>', $this->content );
 		}
 	}

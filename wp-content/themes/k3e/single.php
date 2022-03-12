@@ -1,4 +1,3 @@
-<?php /* Template Name: Artykuł */ ?>
 <?php get_header(); ?>
-<?php // get_template_part( 'template-parts/part' ); ?>   
+<?= get_the_content(); ?>   
 <?php get_footer(); 

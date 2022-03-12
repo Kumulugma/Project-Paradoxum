@@ -142,6 +142,8 @@ class Base extends Root {
 	const O_OPTM_CSS_ASYNC_INLINE 	= 'optm-css_async_inline';
 	const O_OPTM_CSS_FONT_DISPLAY 	= 'optm-css_font_display';
 	const O_OPTM_JS_DEFER 			= 'optm-js_defer';
+	const O_OPTM_LOCALIZE			= 'optm-localize';
+	const O_OPTM_LOCALIZE_DOMAINS	= 'optm-localize_domains';
 	const O_OPTM_EMOJI_RM 			= 'optm-emoji_rm';
 	const O_OPTM_NOSCRIPT_RM 		= 'optm-noscript_rm';
 	const O_OPTM_GGFONTS_ASYNC 		= 'optm-ggfonts_async';
@@ -193,7 +195,6 @@ class Base extends Root {
 	const O_MEDIA_PLACEHOLDER_RESP_ASYNC		= 'media-placeholder_resp_async';
 	const O_MEDIA_IFRAME_LAZY 					= 'media-iframe_lazy';
 	const O_MEDIA_ADD_MISSING_SIZES 			= 'media-add_missing_sizes';
-	const O_MEDIA_LAZYJS_INLINE 				= 'media-lazyjs_inline';
 	const O_MEDIA_LAZY_EXC 						= 'media-lazy_exc';
 	const O_MEDIA_LAZY_CLS_EXC 					= 'media-lazy_cls_exc';
 	const O_MEDIA_LAZY_PARENT_CLS_EXC 			= 'media-lazy_parent_cls_exc';
@@ -453,6 +454,8 @@ class Base extends Root {
 		self::O_DISCUSS_AVATAR_CACHE		=> false,
 		self::O_DISCUSS_AVATAR_CRON			=> false,
 		self::O_DISCUSS_AVATAR_CACHE_TTL	=> 0,
+		self::O_OPTM_LOCALIZE 			=> false,
+		self::O_OPTM_LOCALIZE_DOMAINS	=> array(),
 
 		// Media
 		self::O_MEDIA_LAZY 							=> false,
@@ -467,7 +470,6 @@ class Base extends Root {
 		self::O_MEDIA_PLACEHOLDER_RESP_ASYNC		=> false,
 		self::O_MEDIA_IFRAME_LAZY 					=> false,
 		self::O_MEDIA_ADD_MISSING_SIZES 			=> false,
-		self::O_MEDIA_LAZYJS_INLINE 				=> false,
 		self::O_MEDIA_LAZY_EXC 						=> array(),
 		self::O_MEDIA_LAZY_CLS_EXC 					=> array(),
 		self::O_MEDIA_LAZY_PARENT_CLS_EXC 			=> array(),
@@ -813,6 +815,7 @@ class Base extends Root {
 			// self::O_OPTM_JS_DEFER_EXC	=> 'uri',
 			self::O_OPTM_DNS_PREFETCH	=> 'domain',
 			self::O_CDN_ORI				=> 'noprotocol', // `Original URLs`
+			// self::O_OPTM_LOCALIZE_DOMAINS	=> 'noprotocol', // `Localize Resources`
 			// self::	=> '',
 			// self::	=> '',
 		);
