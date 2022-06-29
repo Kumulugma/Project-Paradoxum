@@ -8,5 +8,9 @@
 
 Wersje
 -------------------
+0.0.2a
+- Podstawowe wtyczki
+- Czysty katalog szablonu
+
 0.0.1a
 - Podstawowa instancja Wordpress.
