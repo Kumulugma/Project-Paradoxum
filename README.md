@@ -8,6 +8,9 @@
 
 Wersje
 -------------------
+0.0.3b
+- Poprawka z wyświetlaniem shortcode
+
 0.0.3a
 - Podpięcie szablonu
 
