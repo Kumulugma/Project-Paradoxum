@@ -8,6 +8,9 @@
 
 Wersje
 -------------------
+0.0.3a
+- Podpięcie szablonu
+
 0.0.2a
 - Podstawowe wtyczki
 - Czysty katalog szablonu
