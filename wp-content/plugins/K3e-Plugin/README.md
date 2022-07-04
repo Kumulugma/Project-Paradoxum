@@ -8,6 +8,12 @@
 
 Wersje
 -------------------
+0.2.5b
+- Poprawka z-index.
+
+0.2.5a
+- Treść statyczna.
+
 0.2.4a
 - Obsługa preloadera.
 

@@ -2,7 +2,7 @@
 Contributors: Backup with UpdraftPlus, DavidAnderson, DNutbourne, aporter, snightingale, bcrodua
 Tags: backup, restore, database backup, wordpress backup, cloud backup, s3, dropbox, google drive, onedrive, ftp, backups
 Requires at least: 3.2
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 1.22.12
 Author URI: https://updraftplus.com
 Donate link: https://david.dw-perspective.org.uk/donate

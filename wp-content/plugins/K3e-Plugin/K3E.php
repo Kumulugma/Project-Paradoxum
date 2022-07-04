@@ -21,7 +21,8 @@ class K3E {
         'registerMenu' => ['status' => false, 'name' => 'Zarejestruj menu', 'class' => 'K3eRegisterMenu'],
         'placeholders' => ['status' => false, 'name' => 'Zaślepka', 'class' => 'K3ePlaceholder'],
         'preloader' => ['status' => false, 'name' => 'Preloader', 'class' => 'K3ePreloader'],
-        'lazyLoader' => ['status' => false, 'name' => 'LazyLoader', 'class' => 'K3eLazyLoader']
+        'lazyLoader' => ['status' => false, 'name' => 'LazyLoader', 'class' => 'K3eLazyLoader'],
+        'staticContent' => ['status' => false, 'name' => 'Treść statyczna', 'class' => 'K3eStaticContent']
     ];
     const DEFAULT_THEME_SUPPORT = [
 //        'admin-bar' => ['status' => false, 'name' => 'admin-bar'],
