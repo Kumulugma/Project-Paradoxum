@@ -40,6 +40,18 @@
         <li class="sections-nav-item">
             <a href="#section-07" class="nav-link sections-nav-link goto-section">
                 <span class="sections-nav-counter">06</span>
+                <?= get_field('plugins_header', 10) ?>
+            </a>
+        </li>
+        <li class="sections-nav-item">
+            <a href="#section-08" class="nav-link sections-nav-link goto-section">
+                <span class="sections-nav-counter">07</span>
+                <?= get_field('instructions_header', 10) ?>
+            </a>
+        </li>
+        <li class="sections-nav-item">
+            <a href="#section-09" class="nav-link sections-nav-link goto-section">
+                <span class="sections-nav-counter">08</span>
                 <?= get_field('contact_header', 10) ?>
             </a>
         </li>

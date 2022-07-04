@@ -23,7 +23,7 @@ function projects() {
         'not_found' => __('Brak projektów', 'k3e'),
         'not_found_in_trash' => __('Brak wyników w koszu', 'k3e'),
         'featured_image' => __('Obrazek wyróżniający', 'k3e'),
-        'set_featured_image' => __('Ustaw obrazem wyróżniający', 'k3e'),
+        'set_featured_image' => __('Ustaw obrazek wyróżniający', 'k3e'),
         'remove_featured_image' => __('Usuń obrazek wyróżniający', 'k3e'),
         'use_featured_image' => __('Użyj jako obrazek wyróżniający', 'k3e'),
         'insert_into_item' => __('Wstaw do projektu', 'k3e'),

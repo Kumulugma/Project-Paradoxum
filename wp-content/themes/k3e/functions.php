@@ -5,3 +5,5 @@ include("components/headerAsset.php");
 include("post-types/projects.php");
 //Register Testimonials
 include("post-types/testimonials.php");
+//Register Plugins
+include("post-types/plugins.php");

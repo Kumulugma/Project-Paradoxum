@@ -33,3 +33,5 @@
 
     </head>
     <body class="with-header position-relative" data-spy="scroll" data-target="#sections-nav" data-offset="80">
+
+        <?php wp_body_open(); ?>

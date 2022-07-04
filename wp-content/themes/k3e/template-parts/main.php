@@ -12,7 +12,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-4">
                         <a class="section-next goto-section" href="#section-02">
-                            <span class="section-next-counter">1/6</span>
+                            <span class="section-next-counter">1/8</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-03">
-                            <span class="section-next-counter">2/6</span>
+                            <span class="section-next-counter">2/8</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-04">
-                            <span class="section-next-counter">3/6</span>
+                            <span class="section-next-counter">3/8</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-05">
-                            <span class="section-next-counter">4/6</span>
+                            <span class="section-next-counter">4/8</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -141,7 +141,61 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-07">
-                            <span class="section-next-counter">5/6</span>
+                            <span class="section-next-counter">5/8</span>
+                            <span class="section-next-label">Następny rozdział</span>
+                            <span class="section-next-icon"></span>
+                        </a>
+                    </div>
+                </section>
+                <section id="section-07" class="section animation">
+                    <div class="section-body">
+                        <?php
+                        $args = array(
+                            'post_type' => 'plugins',
+                            'post_status' => 'publish',
+                            'orderby' => 'ID',
+                        );
+
+                        $the_query = new WP_Query($args);
+                        ?>
+                        <h2 class="section-title animation-translate-overline animation-item-1"><?= get_field('plugins_header', 10) ?></h2>
+                        <div class="row animation-translate animation-item-2">
+                            
+                            <div class="col-12 col-xl-9">
+                                <?= get_field('plugins_content', 10) ?>
+                            </div>
+                            <?php
+                            $i = 0;
+                            if ($the_query->have_posts()) {
+                                while ($the_query->have_posts()) {
+                                    $the_query->the_post();
+                                    $i++;
+                                    ?>
+                                    <div class="col-12 col-md-4">
+                                        <a class="card" href="#modal-plugin-<?= $i ?>" data-toggle="modal">
+                                            <?php if (has_post_thumbnail(get_the_ID())): ?>
+                                                <?php $image_ID = get_post_thumbnail_id(get_the_ID()); ?>
+                                                <?php $image = wp_get_attachment_image_src($image_ID, 'single-post-thumbnail'); ?>
+                                                <?php $image_alt = get_post_meta($image_ID, '_wp_attachment_image_alt', TRUE); ?>
+                                                <img class="card-img-top" src="<?php echo $image[0]; ?>" alt="<?= get_the_title() ?>">
+                                            <?php endif; ?>
+
+                                            <div class="card-body">
+                                                <h3 class="card-title"><?= get_the_title() ?></h3>
+                                                <h4 class="card-subtitle"><?= get_field('plugins_subtitle') ?></h4>
+                                                <p class="card-tags"><?= get_field('plugins_label') ?></p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                <?php } ?>
+                            <?php } ?>
+                            <?php wp_reset_postdata(); ?>
+                        </div>
+                    </div>
+                    <div class="section-footer animation-translate animation-item-3">
+                        <a class="section-next goto-section" href="#section-08">
+                            <span class="section-next-counter">6/8</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
@@ -220,13 +274,50 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-3">
                         <a class="section-next goto-section" href="#section-07">
-                            <span class="section-next-counter">6/6</span>
+                            <span class="section-next-counter">7/7</span>
                             <span class="section-next-label">Następny rozdział</span>
                             <span class="section-next-icon"></span>
                         </a>
                     </div>
                 </section> */?>
-                <section id="section-07" class="section animation">
+                <section id="section-08" class="section animation">
+                    <div class="section-body">
+                        <h2 class="section-title animation-translate-overline animation-item-1"><?= get_field('instructions_header', 10) ?></h2>
+                        <div class="row mb-10 animation-translate animation-item-2">
+                            <div class="col-12 col-md-4">
+                                <div class="instruction">
+                                    <strong class="instruction-label"><?= get_field('instructions_section_1_header', 10) ?></strong>
+                                    <?= get_field('instructions_section_1_content', 10) ?>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="instruction">
+                                    <strong class="instruction-label"><?= get_field('instructions_section_2_header', 10) ?></strong>
+                                    <?= get_field('instructions_section_2_content', 10) ?>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="instruction">
+                                    <strong class="instruction-label"><?= get_field('instructions_section_3_header', 10) ?></strong>
+                                    <?= get_field('instructions_section_3_content', 10) ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-xl-9">
+                                <?= get_field('instructions_content', 10) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-footer animation-translate animation-item-5">
+                        <a class="section-next goto-section" href="#section-09">
+                            <span class="section-next-counter">7/8</span>
+                            <span class="section-next-label">Następny rozdział</span>
+                            <span class="section-next-icon"></span>
+                        </a>
+                    </div>
+                </section>
+                <section id="section-09" class="section animation">
                     <div class="section-body">
                         <h2 class="section-title animation-translate-overline animation-item-1"><?= get_field('contact_header', 10) ?></h2>
                         <div class="row mb-10 animation-translate animation-item-2">
@@ -265,7 +356,7 @@
                     </div>
                     <div class="section-footer animation-translate animation-item-5">
                         <span class="section-next goto-section">
-                            <span class="section-next-counter">6/6</span>
+                            <span class="section-next-counter">8/8</span>
                         </span>
                     </div>
                 </section>
