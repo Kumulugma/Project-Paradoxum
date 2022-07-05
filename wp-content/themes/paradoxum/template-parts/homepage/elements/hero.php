@@ -2,7 +2,7 @@
 <!-- Hero Banner Start -->
 <section class="hero-banner-01 lazyload" 
          data-style="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-         data-src="<?=get_template_directory_uri()?>/assets/images/_hero.JPG"
+         data-src="<?=reset(wp_get_attachment_image_src(get_field('homepage_hero', 7), 'hero'))?>"
          >
     <div class="container">
         <div class="row">

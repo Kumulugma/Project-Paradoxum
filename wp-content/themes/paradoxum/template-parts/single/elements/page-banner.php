@@ -3,7 +3,7 @@
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'page-banner'); ?>
     <?php $banner = $image[0]; ?>
 <?php else: ?>
-    <?php $banner = get_template_directory_uri() . "/assets/images/_hero.JPG"; ?>
+    <?php $banner = reset(wp_get_attachment_image_src(get_field('homepage_hero', 7), 'hero')); ?>
 <?php endif; ?>
 
 <section class="page-banner lazyload" 

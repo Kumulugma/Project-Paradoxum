@@ -8,6 +8,9 @@
 
 Wersje
 -------------------
+0.0.4a
+- Poprawki do wydajności
+
 0.0.3c
 - Naprawa repozytorium
 

@@ -5,7 +5,7 @@
             <div class="col-lg-6 col-md-6">
                 <!-- About Image Start -->
                 <div class="about-thumb">
-                    <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?=get_template_directory_uri()?>/assets/images/_about.JPG" alt="">
+                    <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?=reset(wp_get_attachment_image_src(get_field('homepage_about', 7), 'about'))?>" alt="">
                 </div>
                 <!-- About Image End -->
             </div>
