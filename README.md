@@ -8,6 +8,9 @@
 
 Wersje
 -------------------
+0.0.3c
+- Naprawa repozytorium
+
 0.0.3b
 - Poprawka z wyświetlaniem shortcode
 
