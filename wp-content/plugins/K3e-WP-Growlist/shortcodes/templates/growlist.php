@@ -14,11 +14,22 @@
         <?php
         $args = array(
             'post_type' => 'species',
+            'posts_per_page' => -1,
+            'order' => 'ASC',
+            'orderby' => 'title',
             'tax_query' => array(
+                'relation' => 'AND',
                 array(
                     'taxonomy' => 'groups',
                     'field' => 'slug',
                     'terms' => $group->slug
+                )
+            ),
+            'meta_query' => array(
+                array(
+                    'key' => 'species_state',
+                    'value' => '1',
+                    'compare' => '='
                 )
             )
         );
@@ -47,7 +58,7 @@
                                 <td><a href="<?= get_permalink(get_the_ID()) ?>"><?= get_post_meta(get_the_ID(), "species_code", true) ?></a></td>
                                 <td>
                                     <a href="<?= get_permalink(get_the_ID()) ?>">
-                                        <?= get_the_title() ?> <?= get_post_meta(get_the_ID(), "species_name", true) ?>
+                                        <?= get_the_title() ?> <small><?= get_post_meta(get_the_ID(), "species_name", true) ?></small>
                                         <?php $photos = explode(",", unserialize(get_post_meta(get_the_ID(), "species_photos", true))) ?>
 
                                         <?php if (count($photos) > 1) { ?>

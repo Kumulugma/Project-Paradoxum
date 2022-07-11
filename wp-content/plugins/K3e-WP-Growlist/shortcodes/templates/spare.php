@@ -2,6 +2,8 @@
 $args = array(
     'post_type' => 'species',
     'order' => 'ASC',
+    'orderby' => 'title',
+    'posts_per_page' => -1,
     'meta_query' => array(
         array(
             'key' => 'species_spare',
@@ -32,7 +34,7 @@ $args = array(
                 <tr>
                     <th scope="row"><?= $i ?></th>
                     <td><a href="<?= get_permalink(get_the_ID()) ?>"><?= get_post_meta(get_the_ID(), "species_code", true) ?></a></td>
-                    <td><a href="<?= get_permalink(get_the_ID()) ?>"><?= get_the_title() ?> <?= get_post_meta(get_the_ID(), "species_name", true) ?></a></td>
+                    <td><a href="<?= get_permalink(get_the_ID()) ?>"><?= get_the_title() ?> <small><?= get_post_meta(get_the_ID(), "species_name", true) ?></small></a></td>
                     <td><?= get_post_meta(get_the_ID(), "species_comment", true) ?></td>
                     <td><?= get_post_meta(get_the_ID(), "species_spare_price", true) ?>PLN</td>
                 </tr>

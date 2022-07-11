@@ -6,7 +6,7 @@
     <div class="card" style="max-width: none;">
         <form method="post" action="admin.php?page=static_content_config">
             <fieldset>
-                <legend>Formularze danych statycznych:</legend>
+                <legend><?=__('Formularze danych statycznych:', 'k3e')?></legend>
 
                 <p>
                     <input type="radio" id="form_page" name="StaticForm" value="1" <?= (K3eStaticContent::getStaticFormType() == 1) ? "checked" : "" ?>>
@@ -59,7 +59,7 @@
                         <hr/>
                     <?php } ?>
                 <?php } ?>
-                <button class="button button-primary" type="submit">Zapisz</button>
+                <button class="button button-primary" type="submit"><?=__('Zapisz', 'k3e')?></button>
             </fieldset>
         </form>
     </div>

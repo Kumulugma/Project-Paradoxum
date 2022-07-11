@@ -22,7 +22,7 @@ $content = K3eStaticContent::getStaticContent();
                     </p>
                 <?php } ?>
 
-                <button class="button button-primary" type="submit">Zapisz</button>
+                <button class="button button-primary" type="submit"><?=__('Zapisz', 'k3e')?></button>
             </fieldset>
         </form>
     </div>

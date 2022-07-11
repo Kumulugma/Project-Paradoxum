@@ -13,7 +13,7 @@
                     <p class="sec-desc">
                         <?= __('Dziesięc lat to nie tak dużo, ale każdy kolejny rok to nowe doświadczenie. Pora wiec na trochę liczb, tak w formie ciekawostki...', 'k3e') ?>
                     </p>
-                    <div class="skill-wrapper d-flex justify-content-center">
+                    <div class="skill-wrapper">
                         <?php
                         $count_posts = wp_count_posts('post');
                         $count_species = wp_count_posts('species');
