@@ -10,6 +10,7 @@
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
         
             <?php wp_head(); ?>
+        <!-- Favicons -->
+        <meta name="theme-color" content="#7952b3">
     </head>
-<body <?php body_class(); ?>>
-    <?php wp_body_open(); ?>
+    <body>

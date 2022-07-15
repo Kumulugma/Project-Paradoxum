@@ -13,3 +13,17 @@
     font-size: 3em;
     line-height: 28px;
 }
+
+
+#cookie-consent{
+
+    border: 1px solid #223442;
+    background: #14212b;
+
+}
+
+.allow-button{
+    border: 1px solid #67A81E;
+    background-color: #67A81E;
+    margin: 4px;
+}
