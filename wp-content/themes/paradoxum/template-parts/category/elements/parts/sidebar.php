@@ -20,22 +20,22 @@ $popularpost = new WP_Query(
         <aside class="widget widget-trend-post">
             <h3 class="widget-title"><span><?= __('Popularne wpisy', 'k3e') ?></span></h3>
             <?php if ($popularpost->have_posts()) { ?>
-            <?php while ($popularpost->have_posts()) : $popularpost->the_post(); ?>
-                <div class="tr-post">
-                    <a href="#">
-                        <?php if (has_post_thumbnail(get_the_ID())): ?>
-                            <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'big-icons'); ?>
-                            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $image[0]; ?>" alt="<?php the_title() ?>">
-                        <?php endif; ?>
-                    </a>
-                    <h5><a href="<?= get_permalink() ?>"><?= get_the_title() ?></a>
-                    </h5>
-                    <span><i class="fal fa-calendar-alt"></i><?= get_the_date() ?></span>
-                </div>
-            <?php endwhile; ?>
+                <?php while ($popularpost->have_posts()) : $popularpost->the_post(); ?>
+                    <div class="tr-post">
+                        <a href="#">
+                            <?php if (has_post_thumbnail(get_the_ID())): ?>
+                                <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'big-icons'); ?>
+                                <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $image[0]; ?>" alt="<?php the_title() ?>">
+                            <?php endif; ?>
+                        </a>
+                        <h5><a href="<?= get_permalink() ?>"><?= get_the_title() ?></a>
+                        </h5>
+                        <span><i class="fal fa-calendar-alt"></i><?= get_the_date() ?></span>
+                    </div>
+                <?php endwhile; ?>
             <?php } else { ?>
-                    <p class="text-center"><?=__('Czekamy na odwiedziny', 'k3e')?></p>
-                <?php } ?>
+                <p class="text-center"><?= __('Czekamy na odwiedziny', 'k3e') ?></p>
+            <?php } ?>
         </aside>
         <?php wp_reset_postdata(); ?>
         <aside class="widget widget-categories">
@@ -69,14 +69,14 @@ $popularpost = new WP_Query(
                 'order' => 'DESC',
             ));
             ?>
-            <h3 class="widget-title"><span><?=__('Popularne Tagi', 'k3e')?></span></h3>
+            <h3 class="widget-title"><span><?= __('Popularne Tagi', 'k3e') ?></span></h3>
             <div class="tags">
-                <?php if(count($tags)) { ?>
-                <?php foreach ($tags as $tag) { ?>
-                    <a href="<?= get_tag_link($tag) ?>"><?= $tag->name ?></a>
-                <?php } ?>
+                <?php if (count($tags)) { ?>
+                    <?php foreach ($tags as $tag) { ?>
+                        <a href="<?= get_tag_link($tag) ?>"><?= $tag->name ?></a>
+                    <?php } ?>
                 <?php } else { ?>
-                    <p class="text-center"><?=__('Brak przypisanych tagów', 'k3e')?></p>
+                    <p class="text-center"><?= __('Brak przypisanych tagów', 'k3e') ?></p>
                 <?php } ?>
             </div>
         </aside>
@@ -86,6 +86,12 @@ $popularpost = new WP_Query(
             'post_status' => 'closed',
             'orderby' => 'rand',
             'posts_per_page' => '1',
+            'post_mime_type' => array(
+                'jpg|jpeg|jpe' => 'image/jpeg',
+                'gif' => 'image/gif',
+                'png' => 'image/png',
+            ),
+            'post__not_in' => ['575', '574']
 //            'tax_query' => array(
 //                array(
 //                    'taxonomy' => 'media_category',
@@ -99,11 +105,10 @@ $popularpost = new WP_Query(
             <?php
             while ($random_image->have_posts()) {
                 $random_image->the_post();
-                
                 ?>
                 <aside class="widget widget-image">
-                    <h3 class="widget-title"><span><?=__('Losowy obrazek', 'k3e')?></span></h3>
-            
+                    <h3 class="widget-title"><span><?= __('Losowy obrazek', 'k3e') ?></span></h3>
+
                     <?php $image = wp_get_attachment_image_src((get_the_ID()), 'sidebar-image'); ?>
                     <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $image[0]; ?>" alt="<?php the_title() ?>">
                 </aside>

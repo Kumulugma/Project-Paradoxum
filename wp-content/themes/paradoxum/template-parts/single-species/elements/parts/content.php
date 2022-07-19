@@ -3,7 +3,6 @@
 
     <?php
     $post_images = explode(",", unserialize(get_post_meta(get_the_ID(), "species_photos", true)));
-    array_shift($post_images);
     if (count($post_images) > 0) {
         ?>
         <div class="news-item-3">

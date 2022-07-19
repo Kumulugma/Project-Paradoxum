@@ -8,6 +8,9 @@
 
 Wersje
 -------------------
+0.0.5b
+- Poprawka do wyliczania ilości zdjęć na liście.
+
 0.0.5a
 - Synchronizacja projektu
 

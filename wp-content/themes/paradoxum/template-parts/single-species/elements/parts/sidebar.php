@@ -49,6 +49,12 @@ $other_species = new WP_Query($args);
             'post_status' => 'closed',
             'orderby' => 'rand',
             'posts_per_page' => '1',
+            'post_mime_type' => array(
+                'jpg|jpeg|jpe' => 'image/jpeg',
+                'gif' => 'image/gif',
+                'png' => 'image/png',
+            ),
+            'post__not_in' => ['575', '574']
         );
         $random_image = new WP_Query($args);
         ?>    <?php if ($random_image->have_posts()) { ?>
