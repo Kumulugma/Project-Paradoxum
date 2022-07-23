@@ -8,6 +8,10 @@
 
 Wersje
 -------------------
+0.0.5c
+- Zmiana wysokości lini przy długich nazwach.
+- Jasne kolory menu w małej rozdzielczości.
+
 0.0.5b
 - Poprawka do wyliczania ilości zdjęć na liście.
 
