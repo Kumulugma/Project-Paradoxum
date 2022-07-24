@@ -68,6 +68,7 @@ wp-content/backups/
 wp-content/aiowps_backups/
 wp-content/envato-backups/
 wp-content/ai1wm-backups/
+wp-content/ew-backup/
 
 # Cache files
 wp-content/cache/
