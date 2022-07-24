@@ -8,6 +8,9 @@
 
 Wersje
 -------------------
+0.0.6a
+- Synchronizacja projektu
+
 0.0.5c
 - Zmiana wysokości lini przy długich nazwach.
 - Jasne kolory menu w małej rozdzielczości.
