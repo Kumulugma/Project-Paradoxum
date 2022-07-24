@@ -3,7 +3,8 @@
 
     <?php
     $post_images = explode(",", unserialize(get_post_meta(get_the_ID(), "species_photos", true)));
-    if (count($post_images) > 0) {
+
+    if (count($post_images) > 0 && $post_images[0] != "") {
         ?>
         <div class="news-item-3">
             <div class="news-thumb">
@@ -24,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <?php } else {
+    <?php } else {
         ?>
         <h3>
             <?= __('Niestety ale ten gatunek nie ma jeszcze zdjęć', 'k3e'); ?>
@@ -32,5 +33,7 @@
         <?php
     }
     ?>
+
+    <?php echo do_shortcode("[growlist-gallery id='".get_the_ID()."']"); ?>
 </div>
 <?php wp_reset_postdata(); ?>

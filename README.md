@@ -8,6 +8,9 @@
 
 Wersje
 -------------------
+0.0.7a
+- Wykluczenie obrazków z galerii.
+
 0.0.6a
 - Synchronizacja projektu
 

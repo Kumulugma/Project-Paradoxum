@@ -27,7 +27,7 @@ $other_species = new WP_Query($args);
             <?php if ($other_species->have_posts()) { ?>
                 <?php while ($other_species->have_posts()) : $other_species->the_post(); ?>
                     <div class="tr-post">
-                        <a href="#">
+                        <a href="<?= get_permalink() ?>">
                             <?php if (has_post_thumbnail(get_the_ID())): ?>
                                 <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'big-icons'); ?>
                                 <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $image[0]; ?>" alt="<?php the_title() ?>">
@@ -44,6 +44,7 @@ $other_species = new WP_Query($args);
         </aside>
         <?php wp_reset_postdata(); ?>
         <?php
+
         $args = array(
             'post_type' => 'attachment',
             'post_status' => 'closed',
@@ -54,7 +55,7 @@ $other_species = new WP_Query($args);
                 'gif' => 'image/gif',
                 'png' => 'image/png',
             ),
-            'post__not_in' => ['575', '574']
+            'post__not_in' => excludeImages::getExcluded()
         );
         $random_image = new WP_Query($args);
         ?>    <?php if ($random_image->have_posts()) { ?>

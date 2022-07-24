@@ -8,6 +8,12 @@ include("includes/breadcrumbs.php");
 include("includes/galleryCount.php");
 //Post Views
 include("includes/postViews.php");
+//Wykluczenie zdjęć z losowego obrazka
+include("components/excludeImages/excludeImages.php");
+
+if (is_admin()) {
+    excludeImages::run();
+}
 
 function k3e_custom_new_menu() {
     register_nav_menus(array(

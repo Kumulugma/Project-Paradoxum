@@ -22,7 +22,7 @@ $popularpost = new WP_Query(
             <?php if ($popularpost->have_posts()) { ?>
                 <?php while ($popularpost->have_posts()) : $popularpost->the_post(); ?>
                     <div class="tr-post">
-                        <a href="#">
+                        <a href="<?= get_permalink() ?>">
                             <?php if (has_post_thumbnail(get_the_ID())): ?>
                                 <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'big-icons'); ?>
                                 <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $image[0]; ?>" alt="<?php the_title() ?>">
@@ -91,7 +91,7 @@ $popularpost = new WP_Query(
                 'gif' => 'image/gif',
                 'png' => 'image/png',
             ),
-            'post__not_in' => ['575', '574']
+            'post__not_in' => excludeImages::getExcluded()
 //            'tax_query' => array(
 //                array(
 //                    'taxonomy' => 'media_category',
