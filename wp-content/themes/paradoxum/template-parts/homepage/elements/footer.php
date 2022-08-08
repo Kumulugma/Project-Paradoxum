@@ -58,6 +58,7 @@
                             <li>
                                 <a href="<?php echo get_permalink($species_item['ID']) ?>">
                                     <?php echo get_the_title($species_item['ID']); ?>
+                                    <small><?= get_post_meta($species_item['ID'], 'species_name', true) ?></small>
                                 </a>
                             </li>
                         <?php endforeach; ?>
