@@ -73,12 +73,13 @@ class Cloud extends Base {
 	);
 
 	private static $_QUEUE_SVC_SET = array(
+		self::SVC_UCSS,
 		self::SVC_VPI,
 	);
 
 	public static $SERVICES_LOAD_CHECK = array(
 		self::SVC_CCSS,
-		self::SVC_UCSS,
+		// self::SVC_UCSS,
 		// self::SVC_VPI,
 		self::SVC_LQIP,
 		self::SVC_HEALTH,
@@ -802,7 +803,7 @@ class Cloud extends Base {
 		if ( ! empty( $json[ '_carry_on' ] ) ) {
 			self::debug( 'Carry_on usage', $json[ '_carry_on' ] );
 			// Store generic info
-			foreach ( array( 'usage', 'promo', '_err', '_info', '_note', '_success' ) as $v ) {
+			foreach ( array( 'usage', 'promo', 'partner', '_err', '_info', '_note', '_success' ) as $v ) {
 				if ( ! empty( $json[ '_carry_on' ][ $v ] ) ) {
 					switch ( $v ) {
 						case 'usage':
@@ -815,6 +816,10 @@ class Cloud extends Base {
 								$this->_summary[ $v ] = array();
 							}
 							$this->_summary[ $v ][] = $json[ '_carry_on' ][ $v ];
+							break;
+
+						case 'partner':
+							$this->_summary[ $v ] = $json[ '_carry_on' ][ $v ];
 							break;
 
 						case '_error':
@@ -1288,7 +1293,7 @@ class Cloud extends Base {
 
 		$extraRet = array();
 		$qsDrop = array();
-		if ( ! $this->_api_key && $this->_summary[ 'is_linked' ]) {
+		if ( ! $this->_api_key && ! empty( $this->_summary[ 'is_linked' ] ) ) {
 			$this->_summary[ 'is_linked' ] = 0;
 			self::save_summary();
 		}

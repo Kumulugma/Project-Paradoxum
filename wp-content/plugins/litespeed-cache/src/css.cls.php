@@ -278,20 +278,7 @@ class CSS extends Base {
 		}
 
 		// Parse HTML to gather all CSS content before requesting
-		$css = false;
-		if ( $type == 'ccss' ) {
-			list( $css, $html ) = $this->prepare_css( $html, $is_webp );
-		}
-		else {
-			list( , $html ) = $this->prepare_css( $html, $is_webp, true ); // Use this to drop CSS from HTML as we don't need those CSS to generate UCSS
-			$filename = $this->cls( 'Data' )->load_url_file( $url_tag, $vary, 'css' );
-			$filepath_prefix = $this->_build_filepath_prefix( 'css' );
-			$static_file = LITESPEED_STATIC_DIR . $filepath_prefix . $filename . '.css';
-			Debug2::debug( '[UCSS] Checking combined file ' . $static_file );
-			if ( file_exists( $static_file ) ) {
-				$css = File::read( $static_file );
-			}
-		}
+		list( $css, $html ) = $this->prepare_css( $html, $is_webp );
 
 		if ( ! $css ) {
 			Debug2::debug( '[UCSS] ❌ No combined css' );
@@ -319,7 +306,7 @@ class CSS extends Base {
 		// Old version compatibility
 		if ( empty( $json[ 'status' ] ) ) {
 			if ( ! empty( $json[ $type ] ) ) {
-				$this->_save_con( $type, $json[ $type ], $queue_k );
+				$this->_save_con( $type, $json[ $type ], $queue_k, $is_mobile, $is_webp );
 			}
 
 			// Delete the row
@@ -345,7 +332,7 @@ class CSS extends Base {
 	 *
 	 * @since 4.2
 	 */
-	private function _save_con( $type, $css, $queue_k ) {
+	private function _save_con( $type, $css, $queue_k, $mobile, $webp ) {
 		// Add filters
 		$css = apply_filters( 'litespeed_' . $type, $css, $queue_k );
 		Debug2::debug2( '[CSS] con: ' . $css );
@@ -367,7 +354,7 @@ class CSS extends Base {
 		$vary = $this->_queue[ $queue_k ][ 'vary' ];
 		Debug2::debug2( "[CSS] Save URL to file [file] $static_file [vary] $vary" );
 
-		$this->cls( 'Data' )->save_url( $url_tag, $vary, $type, $filecon_md5, dirname( $static_file ) );
+		$this->cls( 'Data' )->save_url( $url_tag, $vary, $type, $filecon_md5, dirname( $static_file ), $mobile, $webp );
 
 		Purge::add( strtoupper( $type ) . '.' . md5( $queue_k ) );
 	}

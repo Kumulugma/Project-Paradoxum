@@ -74,6 +74,15 @@ class UIClassGrowlistAdmin {
                     'growlist_pdf_content'
             );
 
+            add_submenu_page(
+                    'growlist',
+                    __('Albumy', 'k3e'),
+                    __('Albumy', 'k3e'),
+                    'manage_options',
+                    'growlist_photos',
+                    'growlist_photos_content'
+            );
+
             /* Dostępne pozycje
               2 – Dashboard
               4 – Separator
@@ -98,6 +107,9 @@ class UIClassGrowlistAdmin {
         UIClassGrowlistAdmin::GrowlistSeeds();
         UIClassGrowlistAdmin::Wishlist();
         UIClassGrowlistAdmin::GeneratePDF();
+        UIClassGrowlistAdmin::GenerateCSV();
+        UIClassGrowlistAdmin::IconInTaxonomy();
+        UIClassGrowlistAdmin::PhotoPackages();
 
         UIClassGrowlistAdmin::AlterTableList();
 
@@ -139,6 +151,11 @@ class UIClassGrowlistAdmin {
             include plugin_dir_path(__FILE__) . 'templates/growlist/pdf.php';
         }
 
+        function growlist_photos_content() {
+
+            include plugin_dir_path(__FILE__) . 'templates/growlist/photos.php';
+        }
+
     }
 
     public static function List() {
@@ -170,11 +187,15 @@ class UIClassGrowlistAdmin {
                 'species_name',
                 'species_state',
                 'species_comment',
+                'species_own',
             ];
             foreach ($fields as $field) {
                 if (array_key_exists($field, $_POST)) {
                     update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
                 }
+            }
+            if (!isset($_POST['species_own'])) {
+                update_post_meta($post_id, 'species_own', 0);
             }
         }
 
@@ -304,7 +325,7 @@ class UIClassGrowlistAdmin {
 
     public static function Wishlist() {
         if (isset($_POST['Growlist'])) {
-            $wishlist = htmlentities($_POST['Growlist']['wishlist']);
+            $wishlist = ($_POST['Growlist']['wishlist']);
             update_option('wishlist', serialize($wishlist));
             wp_redirect('admin.php?page=' . $_GET['page']);
         }
@@ -312,6 +333,102 @@ class UIClassGrowlistAdmin {
 
     public static function GeneratePDF() {
         if (isset($_POST['Growlist']['PDF'])) {
+            $growlist = [];
+
+            if ($_POST['Growlist']['species_status'] != -1) {
+                $post_status = $_POST['Growlist']['species_status'];
+            } else {
+                $post_status = NULL;
+            }
+
+            $i = 1;
+            foreach (get_terms('groups', array('hide_empty' => false,)) as $group) {
+
+                if ($post_status) {
+                    $args = array(
+                        'post_type' => 'species',
+                        'order' => 'ASC',
+                        'orderby' => 'title',
+                        'posts_per_page' => -1,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'groups',
+                                'field' => 'slug',
+                                'terms' => $group->slug
+                            ),
+                        ),
+                        'meta_query' => array(
+                            array(
+                                'key' => 'species_state',
+                                'value' => $post_status,
+                                'compare' => '='
+                            )
+                        )
+                    );
+                } else {
+                    $args = array(
+                        'post_type' => 'species',
+                        'order' => 'ASC',
+                        'orderby' => 'title',
+                        'posts_per_page' => -1,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'groups',
+                                'field' => 'slug',
+                                'terms' => $group->slug
+                            )
+                        )
+                    );
+                }
+
+                $species = new WP_Query($args);
+                if ($species->have_posts()) {
+                    while ($species->have_posts()) : $species->the_post();
+                        $growlist[$i]['i'] = $i;
+                        $growlist[$i]['code'] = get_post_meta(get_the_ID(), 'species_code', true) ?: '';
+                        $growlist[$i]['name'] = get_the_title();
+                        $growlist[$i]['mininame'] = get_post_meta(get_the_ID(), 'species_name', true);
+                        $groups = "";
+                        foreach (get_the_terms(get_the_ID(), 'groups') as $group) {
+                            $groups .= $group->name . " ";
+                        }
+                        $growlist[$i]['group'] = $groups;
+                        switch (get_post_meta(get_the_ID(), 'species_state', true)) {
+                            case 1:
+                                $growlist[$i]['state'] = __('Ok', 'k3e');
+                                break;
+                            case 2:
+                                $growlist[$i]['state'] = __('Wysiew', 'k3e');
+                                break;
+                            case 3:
+                                $growlist[$i]['state'] = __('Leci', 'k3e');
+                                break;
+                            case 4:
+                                $growlist[$i]['state'] = __('Nie przetrwał', 'k3e');
+                                break;
+                            case 5:
+                                $growlist[$i]['state'] = __('Ponownie poszukiwany', 'k3e');
+                                break;
+                        }
+                        $growlist[$i]['comment'] = get_post_meta(get_the_ID(), 'species_comment', true) ?: '';
+
+                        $post_images = explode(",", unserialize(get_post_meta(get_the_ID(), "species_photos", true)));
+                        $growlist[$i]['images'] = count($post_images) - 1;
+                        $growlist[$i]['thumbnail'] = has_post_thumbnail(get_the_ID());
+                        $i++;
+                    endwhile;
+                }
+            }
+            update_option('_pdf_growlist', json_encode($growlist));
+
+            include plugin_dir_path(__FILE__) . 'templates/growlist/document_pdf.php';
+
+            wp_redirect('admin.php?page=' . $_GET['page']);
+        }
+    }
+
+    public static function GenerateCSV() {
+        if (isset($_POST['Growlist']['CSV'])) {
             $growlist = [];
 
             $i = 1;
@@ -369,9 +486,9 @@ class UIClassGrowlistAdmin {
                     endwhile;
                 }
             }
-            update_option('_pdf_growlist', json_encode($growlist));
+            update_option('_csv_growlist', json_encode($growlist));
 
-            include plugin_dir_path(__FILE__) . 'templates/growlist/document_pdf.php';
+            include plugin_dir_path(__FILE__) . 'templates/growlist/document_csv.php';
 
             wp_redirect('admin.php?page=' . $_GET['page']);
         }
@@ -394,6 +511,8 @@ class UIClassGrowlistAdmin {
         function add_new_columns($columns) {
             $column_meta = array('species_name' => __('Dalsza nazwa', 'k3e'));
             $columns = array_slice($columns, 0, 2, true) + $column_meta + array_slice($columns, 2, NULL, true);
+            $column_meta = array('species_state' => __('Status okazu', 'k3e'));
+            $columns = array_slice($columns, 0, 2, true) + $column_meta + array_slice($columns, 2, NULL, true);
             return $columns;
         }
 
@@ -406,15 +525,119 @@ class UIClassGrowlistAdmin {
                     $metaData = get_post_meta($post->ID, 'species_name', true);
                     echo $metaData;
                     break;
+                case 'species_state':
+                    $metaData = get_post_meta($post->ID, 'species_state', true);
+                    switch ($metaData) {
+                        case '1':
+                            echo __('Ok', 'k3e');
+                            break;
+                        case '2':
+                            echo __('Wysiew', 'k3e');
+                            break;
+                        case '3':
+                            echo __('Leci', 'k3e');
+                            break;
+                        case '4':
+                            echo __('Nie przetrwał', 'k3e');
+                            break;
+                        case '5':
+                            echo __('Ponownie poszukiwany', 'k3e');
+                            break;
+                    }
+                    break;
             }
         }
 
-        function register_sortable_columns($columns) {
-            $columns['species_name'] = __('Dalsza nazwa', 'k3e');
-            return $columns;
+    }
+
+    public static function PhotoPackages() {
+        if (isset($_POST['PhotoAlbum']['checksum'])) {
+            if (!empty($_POST['PhotoAlbum']['start_date'])) {
+                $start_date = $_POST['PhotoAlbum']['start_date'];
+
+                $query_images_args = array(
+                    'post_type' => 'attachment',
+                    'post_mime_type' => 'image',
+                    'post_status' => 'inherit',
+                    'posts_per_page' => - 1,
+                    'date_query' => array(
+                        array(
+                            'after' => $start_date,
+                            'before' => date('Y-m-d H:i:s'),
+                            'inclusive' => true,
+                        ),
+                    ),
+                );
+
+                $query_images = new WP_Query($query_images_args);
+
+                $post_id = wp_insert_post(array(
+                    'post_type' => 'photo_album',
+                    'post_title' => 'Album zdjęć od ' . $start_date . ' do ' . date('Y-m-d'),
+                    'post_status' => 'publish',
+                    'comment_status' => 'closed', // if you prefer
+                    'ping_status' => 'closed', // if you prefer
+                ));
+
+                if ($post_id) {
+                    // insert post meta
+                    add_post_meta($post_id, 'ready_photos', 0);
+                    add_post_meta($post_id, 'package_photos', $query_images->found_posts);
+                    add_post_meta($post_id, 'start_date', $start_date);
+                }
+            }
+
+
+
+            if (isset($_POST['PhotoAlbum']['pack'])) {
+                manuallyPackPhotos();
+            }
+
+            wp_redirect('admin.php?page=' . $_GET['page']);
+        }
+    }
+
+    
+    public static function IconInTaxonomy() {
+
+        add_action('groups_add_form_fields', 'groups_add_term_fields');
+
+        function groups_add_term_fields($taxonomy) {
+            include plugin_dir_path(__FILE__) . 'templates/taxonomy/add.php';
         }
 
-        add_filter('manage_species_sortable_columns', 'register_sortable_columns');
+        add_action('admin_enqueue_scripts', 'k3e_groups_js');
+
+        function k3e_groups_js() {
+
+            if (!did_action('wp_enqueue_media')) {
+                wp_enqueue_media();
+            }
+            wp_enqueue_script(
+                    'K3e-Groups',
+                    plugin_dir_url(__FILE__) . '../assets/k3e-groups.js',
+                    array('jquery')
+            );
+        }
+
+        add_action('groups_edit_form_fields', 'groups_edit_term_fields', 10, 2);
+
+        function groups_edit_term_fields($term, $taxonomy) {
+            include plugin_dir_path(__FILE__) . 'templates/taxonomy/edit.php';
+        }
+
+        add_action('created_groups', 'k3e_groups_save_term_fields');
+        add_action('edited_groups', 'k3e_groups_save_term_fields');
+
+        function k3e_groups_save_term_fields($term_id) {
+
+            update_term_meta(
+                    $term_id,
+                    'k3e_groups_img',
+                    absint($_POST['k3e_groups_img'])
+            );
+        }
+
     }
 
 }

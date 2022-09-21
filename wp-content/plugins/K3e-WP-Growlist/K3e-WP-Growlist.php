@@ -3,15 +3,17 @@
 /*
   Plugin name: K3e - Lista roślin
   Plugin URI:
-  Description: Obsługa listy roślin.
+  Description: Obsługa funkcjonalności listy roślin.
   Author: K3e
   Author URI: https://www.k3e.pl/
   Text Domain:
   Domain Path:
-  Version: 0.0.1a
+  Version: 0.1.7
  */
 require_once 'cpt/species.php';
 require_once 'cpt/plugin_taxonomy.php';
+require_once 'cpt/photo_album.php';
+require_once 'cron/growlist_photo_albums.php';
 
 add_action('init', 'k3e_growlist_plugin_init');
 
@@ -38,6 +40,7 @@ function k3e_growlist_plugin_init() {
         require_once 'shortcodes/spare.php';
         require_once 'shortcodes/seeds.php';
         require_once 'shortcodes/sows.php';
+        require_once 'shortcodes/gallery.php';
     }
 }
 
