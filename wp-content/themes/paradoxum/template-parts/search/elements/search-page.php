@@ -72,6 +72,8 @@
                             </div>
                         </div>
                     <?php } ?>
+                <?php } else { ?>
+                <h4><?= __('Niestety nie ma tu tego...', 'k3e') ?></h4>
                 <?php } ?>
 
                 <?php

@@ -39,6 +39,7 @@ if (!empty($s)) {
 
 $paged = (get_query_var('page')) ? get_query_var('page') : 1;
 
+
 $postsPerPage = get_option('posts_per_page');
 $postOffset = (($paged - 1) * $postsPerPage);
 
@@ -95,10 +96,9 @@ $blog = new WP_Query($args);
     if ($total_pages > 1) {
 
         $current_page = max(0, $paged);
-
         $links = paginate_links(array(
-            'base' => get_pagenum_link(1) . '%_%',
-            'format' => 'page/%#%',
+            'base' => get_term_link($groups, 'groups') . '%_%',
+            'format' => '&page=%#%',
             'current' => $current_page,
             'total' => $total_pages,
             'prev_text' => '<i class="fal fa-arrow-left"></i>',
