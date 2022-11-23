@@ -36,6 +36,7 @@ if ( ! $can_token ) {
 	$apply_ts_txt .= ' ' . sprintf( __( 'Next available request time: <code>After %s</code>', 'litespeed-cache' ), Utility::readable_time( $next_available_req, 0, true ) );
 }
 
+$this->form_action();
 ?>
 
 <h3 class="litespeed-title-short">
@@ -194,12 +195,6 @@ if ( ! $can_token ) {
 				⚠️ <?php echo __( 'Notice', 'litespeed-cache' ); ?>: <?php echo sprintf( __( 'You need to turn %s on and finish all WebP generation to get maximum result.', 'litespeed-cache' ),  '<code>' . Lang::title( Base::O_IMG_OPTM_WEBP ) . '</code>' ); ?>
 				</font>
 				<?php endif; ?>
-
-				<?php if ( ! $this->conf( Base::O_IMG_OPTM_WEBP_REPLACE ) ) : ?>
-				<br /><font class="litespeed-danger litespeed-left10">
-				⚠️ <?php echo __( 'Notice', 'litespeed-cache' ); ?>: <?php echo sprintf( __( 'You need to turn %s on to get maximum result.', 'litespeed-cache' ),  '<code>' . Lang::title( Base::O_IMG_OPTM_WEBP_REPLACE ) . '</code>' ); ?>
-				</font>
-				<?php endif; ?>
 			</div>
 		</td>
 	</tr>
@@ -236,3 +231,5 @@ if ( ! $can_token ) {
 	</tr>
 
 </tbody></table>
+
+<?php $this->form_end(); ?>

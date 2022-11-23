@@ -1,9 +1,17 @@
-<ul class="nav nav-tabs justify-content-center" id="myGrowlistTabs" role="tablist">
+<?php
+$tab = isset($_GET['tab']) ? $_GET['tab'] : "";
+?>
+
+<ul class="nav nav-tabs justify-content-center row" id="myGrowlistTabs" role="tablist">
     <?php $i = 1; ?>
     <?php foreach (get_terms('groups', array('hide_empty' => false,)) as $group) { ?>
-        <li class="nav-item">
-            <a class="nav-link <?= ($i == 1 ? 'active' : '') ?>" id="<?= $group->slug ?>-tab" data-toggle="tab" href="#<?= $group->slug ?>" role="tab" aria-controls="<?= $group->slug ?> " aria-selected="true">
-                <img src="<?=wp_get_attachment_image_url(get_term_meta($group->term_id, 'k3e_groups_img', true), 'big-icons')?>" class="rounded mt-2" alt="<?= $group->name ?>" data-toggle="tooltip" title="<?= $group->name ?>">
+        <li class="nav-item col p-0">
+            <a class="nav-link h-100 p-0 <?= (($i == 1 && ($tab) == "" ) || $tab == $group->slug ? 'active' : '') ?>" id="<?= $group->slug ?>-tab" data-toggle="tab" href="#<?= $group->slug ?>" role="tab" aria-controls="<?= $group->slug ?> " aria-selected="true">
+                <img src="<?= wp_get_attachment_image_url(get_term_meta($group->term_id, 'k3e_groups_img', true), 'big-icons') ?>" class="rounded mt-2 mx-auto d-block" alt="<?= $group->name ?>" data-toggle="tooltip" title="<?= $group->name ?>">
+                <h5 class="d-block text-center lh-1">
+                    <small><?= $group->name ?></small>
+                </h5>
+
             </a>
         </li> 
         <?php $i++; ?>
@@ -36,7 +44,7 @@
             )
         );
         ?>    
-        <div class="tab-pane fade show <?= ($j == 1 ? 'active' : '') ?>" id="<?= $group->slug ?>" role="tabpanel" aria-labelledby="<?= $group->slug ?>-tab">
+        <div class="tab-pane fade show <?= (($j == 1 && ($tab) == "" ) || $tab == $group->slug ? 'active' : '') ?>" id="<?= $group->slug ?>" role="tabpanel" aria-labelledby="<?= $group->slug ?>-tab">
             <table class="table table-sm table-striped">
                 <thead>
                     <tr>
@@ -73,9 +81,9 @@
                                         <?php } ?>
                                     </a>
                                     <?php $comment = get_post_meta(get_the_ID(), "species_comment", true) ?>
-                                    <?php if($comment != "") { ?>
-                                    <br>
-                                    <small class="border-top font-weight-light"><?= $comment ?></small>
+                                    <?php if ($comment != "") { ?>
+                                        <br>
+                                        <small class="border-top font-weight-light"><?= $comment ?></small>
                                     <?php } ?>
                                     <br>
                                     <small>

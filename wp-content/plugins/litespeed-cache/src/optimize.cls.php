@@ -681,7 +681,7 @@ class Optimize extends Base {
 	private function _src_queue_handler( $src_list, $html_list, $file_type = 'css' ) {
 		$html_list_ori = $html_list;
 
-		$can_webp = ( defined( 'LITESPEED_GUEST_OPTM' ) || $this->conf( Base::O_IMG_OPTM_WEBP_REPLACE ) ) && $this->cls( 'Media' )->webp_support();
+		$can_webp = ( defined( 'LITESPEED_GUEST_OPTM' ) || $this->conf( Base::O_IMG_OPTM_WEBP ) ) && $this->cls( 'Media' )->webp_support();
 
 		$tag = $file_type == 'css' ? 'link' : 'script';
 		foreach ( $src_list as $key => $src_info ) {
@@ -968,6 +968,7 @@ class Optimize extends Base {
 	 */
 	private function _parse_css() {
 		$excludes = apply_filters( 'litespeed_optimize_css_excludes', $this->conf( self::O_OPTM_CSS_EXC ) );
+		$ucss_file_exc_inline = apply_filters( 'litespeed_optimize_ucss_file_exc_inline', $this->conf( self::O_OPTM_UCSS_FILE_EXC_INLINE ) );
 
 		$combine_ext_inl = $this->conf( self::O_OPTM_CSS_COMB_EXT_INL );
 
@@ -1009,6 +1010,16 @@ class Optimize extends Base {
 					Debug2::debug( '[Optm] rm css snippet ' . $attrs[ 'href' ] );
 					// Delete this css snippet from orig html
 					$this->content = str_replace( $match[ 0 ], '', $this->content );
+
+					continue;
+				}
+
+				// Check if need to inline this css file
+				if ( Utility::str_hit_array( $attrs[ 'href' ], $ucss_file_exc_inline ) ) {
+					Debug2::debug( '[Optm] ucss_file_exc_inline hit ' . $attrs[ 'href' ] );
+					// Replace this css to inline from orig html
+					$inline_script = '<style>' . $this->__optimizer->load_file($attrs[ 'href' ]) . '</style>';
+					$this->content = str_replace( $match[ 0 ], $inline_script, $this->content );
 
 					continue;
 				}

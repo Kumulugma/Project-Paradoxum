@@ -45,7 +45,7 @@ class AIOWPSecurity_Installer {
 			 * otherwise it will contain the original blog id and not the current id we need.
 			 *
 			 */
-			$lockdown_tbl_name = $wpdb->prefix.'aiowps_login_lockdown';
+			$lockout_tbl_name = $wpdb->prefix.'aiowps_login_lockdown';
 			$failed_login_tbl_name = $wpdb->prefix.'aiowps_failed_logins';
 			$user_login_activity_tbl_name = $wpdb->prefix.'aiowps_login_activity';
 			$aiowps_global_meta_tbl_name = $wpdb->prefix.'aiowps_global_meta';
@@ -53,7 +53,7 @@ class AIOWPSecurity_Installer {
 			$perm_block_tbl_name = $wpdb->prefix.'aiowps_permanent_block';
 			
 		} else {
-			$lockdown_tbl_name = AIOWPSEC_TBL_LOGIN_LOCKDOWN;
+			$lockout_tbl_name = AIOWPSEC_TBL_LOGIN_LOCKOUT;
 			$failed_login_tbl_name = AIOWPSEC_TBL_FAILED_LOGINS;
 			$user_login_activity_tbl_name = AIOWPSEC_TBL_USER_LOGIN_ACTIVITY;
 			$aiowps_global_meta_tbl_name = AIOWPSEC_TBL_GLOBAL_META_DATA;
@@ -73,7 +73,7 @@ class AIOWPSecurity_Installer {
 			$charset_collate .= " COLLATE $wpdb->collate";
 		}
 
-		$ld_tbl_sql = "CREATE TABLE " . $lockdown_tbl_name . " (
+		$ld_tbl_sql = "CREATE TABLE " . $lockout_tbl_name . " (
 		id bigint(20) NOT NULL AUTO_INCREMENT,
 		user_id bigint(20) NOT NULL,
 		user_login VARCHAR(150) NOT NULL,
@@ -84,7 +84,10 @@ class AIOWPSecurity_Installer {
 		unlock_key varchar(128) NOT NULL DEFAULT '',
 		is_lockout_email_sent tinyint(1) NOT NULL DEFAULT '1',
 		backtrace_log text NOT NULL DEFAULT '',
-		PRIMARY KEY  (id)
+		PRIMARY KEY  (id),
+		  KEY failed_login_ip (failed_login_ip),
+		  KEY is_lockout_email_sent (is_lockout_email_sent),
+		  KEY unlock_key (unlock_key)
 		)" . $charset_collate . ";";
 		dbDelta($ld_tbl_sql);
 
@@ -94,7 +97,10 @@ class AIOWPSecurity_Installer {
 		user_login VARCHAR(150) NOT NULL,
 		failed_login_date datetime NOT NULL DEFAULT '1000-10-10 10:00:00',
 		login_attempt_ip varchar(100) NOT NULL DEFAULT '',
-		PRIMARY KEY  (id)
+		PRIMARY KEY  (id),
+		  KEY failed_login_date (failed_login_date),
+		  KEY login_attempt_ip (login_attempt_ip),
+		  KEY failed_login_date_and_login_attempt_ip (failed_login_date, login_attempt_ip)
 		)" . $charset_collate . ";";
 		dbDelta($fl_tbl_sql);
 
@@ -150,7 +156,8 @@ class AIOWPSecurity_Installer {
 		country_origin varchar(50) NOT NULL DEFAULT '',
 		blocked_date datetime NOT NULL DEFAULT '1000-10-10 10:00:00',
 		unblock tinyint(1) NOT NULL DEFAULT '0',
-		PRIMARY KEY  (id)
+		PRIMARY KEY  (id),
+		KEY blocked_ip (blocked_ip)
 		)" . $charset_collate . ";";
 		dbDelta($pb_tbl_sql);
 
@@ -163,8 +170,6 @@ class AIOWPSecurity_Installer {
 			PRIMARY KEY  (id)
 			)" . $charset_collate . ";";
 		dbDelta($debug_log_tbl_sql);
-
-		update_option("aiowpsec_db_version", AIO_WP_SECURITY_DB_VERSION);
 	}
 
 	public static function create_db_backup_dir() {
@@ -223,8 +228,8 @@ class AIOWPSecurity_Installer {
 	}
 	
 	/**
-	 * Setup aiowps cron tasks
-	 * Handles both single and multi-site (NW activation) cases
+	 * Setup AIOS cron tasks.
+	 * Handles both single and multi-site (NW activation) cases.
 	 *
 	 * @global type $wpdb
 	 * @param Boolean $networkwide Whether set cronjob networkwide or normal site.
@@ -249,9 +254,9 @@ class AIOWPSecurity_Installer {
 			do_action('aiowps_activation_complete');
 		}
 	}
-	
+
 	/**
-	 * Helper function for scheduling aiowps cron events.
+	 * Helper function for scheduling AIOS cron events.
 	 *
 	 * @return Void
 	 */
