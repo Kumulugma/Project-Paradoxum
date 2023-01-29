@@ -11,7 +11,7 @@ if ($csv_file) {
 }
 ?>
 
-<div class="wrap" id="configuration-page">
+<div class="wrap" id="K3eLabel">
     <h1 class="wp-heading-inline">
         <?php esc_html_e('Etykiety', 'k3e'); ?>
     </h1>
@@ -21,67 +21,57 @@ if ($csv_file) {
         <div id="dashboard-widgets" class="metabox-holder">
             <div class="postbox-container" style="width:100%;">
                 <div class="card" style="max-width: none; margin:2px">
-                    <div class="k3e_box">
-                        <style scoped>
-                            .k3e_box{
-                                display: grid;
-                                grid-template-columns: max-content 1fr;
-                                grid-row-gap: 10px;
-                                grid-column-gap: 20px;
-                            }
-                            .k3e_field{
-                                display: contents;
-                            }
-                        </style>
+                    <div class="section">
                         <form method="post" action="admin.php?page=labels_pdf&save=form"> 
                             <div>
-                                <p class="meta-options k3e_field">
-                                    <label for="k3e_document_pdf_name"><?= __('Nazwa dokumentu', 'k3e') ?></label>
-                                    <input id="k3e_document_pdf_name" type="text" name="Labels[document_pdf_name]" value='<?= __('Etykiety ', 'k3e') . date('Y-m-d H:i:s') ?>'>
-                                </p>
+                                <div id="header">
+                                    <h2><?= __('Konfiguracja etykiety', 'k3e') ?></h2>
+                                    <div class="info">
+                                        <p><?= __('Wzór dokumentu: ', 'k3e') ?> <a href="<?= plugin_dir_url(__FILE__) . '../../assets/etykiety.csv'; ?>" download><?= __('Wzór', 'k3e') ?></a></p>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <label>
+                                        <img src="<?= plugin_dir_url(__FILE__) . '../../assets/etykiety_4.png'; ?>" width="67px" alt="<?= __("Małe ikony", "k3e") ?>" for="k3e_labels_small"/>
+                                        <input type="radio" id="k3e_labels_small" name="Labels[labels_size]" value="1" checked>
+                                        <?= __('Małe', 'k3e') ?>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <label for="k3e_labels_medium">
+                                        <img src="<?= plugin_dir_url(__FILE__) . '../../assets/etykiety_2.png'; ?>" width="67px" alt="<?= __("Średnie ikony", "k3e") ?>" for="k3e_labels_medium"/>
+                                        <input type="radio" id="k3e_labels_medium" name="Labels[labels_size]" value="2">
+                                        <?= __('Średnie', 'k3e') ?>
+                                    </label>
+                                </div>
                             </div>
-                            <div>
-                                <h2><?= __('Rozmiar etykiet', 'k3e') ?></h2>
-                                <p class="meta-options k3e_field">
-                                    <input type="radio" id="k3e_labels_small" name="Labels[labels_size]" value="1" checked>
-                                    <label for="k3e_labels_small"><?= __('Małe', 'k3e') ?></label>
-                                    <br>
-                                    <input type="radio" id="k3e_labels_medium" name="Labels[labels_size]" value="2">
-                                    <label for="k3e_labels_medium"><?= __('Średnie', 'k3e') ?></label>
-
-                                </p>
-                            </div>
-                            <div id="csv-box" data-default='fa fa-upload'' style="padding-left: 5px; padding-top: 10px;">
-                                <?php if (!empty($csv_file)) { ?>
-                                    <?php
-                                    switch (get_post_mime_type($csv_file)) {
-                                        default:
-                                            echo '<a href="post.php?post=' . $csv_file . '&action=edit"><i class="fa fa-file" aria-hidden="true" style="font-size: 4em;"></i></a>';
-                                            break;
-                                    }
-                                    ?>
-                                <?php } else { ?>
-                                    <i class="fa fa-upload" aria-hidden="true" style="font-size: 4em"></i>
-                                <?php } ?></p>
-                            </div>
-                            <div style="display: block; margin-top: 4px; margin-bottom: 10px">
+                            <div class="box">
+                                <div id="upload" data-default='fa fa-upload'>
+                                    <?php if (!empty($csv_file)) { ?>
+                                        <?php
+                                        switch (get_post_mime_type($csv_file)) {
+                                            default:
+                                                echo '<a href="post.php?post=' . $csv_file . '&action=edit"><i class="fa fa-file" aria-hidden="true" style="font-size: 4em;"></i></a>';
+                                                break;
+                                        }
+                                        ?>
+                                    <?php } else { ?>
+                                        <i class="fa fa-upload" aria-hidden="true" style="font-size: 2.2em"></i>
+                                    <?php } ?>
+                                </div>
                                 <input type='button' class="button-secondary" value="<?php esc_attr_e('Wybierz pliki', 'k3e'); ?>" id="csv_media_manager" style="margin-left: 5px;"/>
                                 <input type='button' class="button-secondary" value="<?php esc_attr_e('Usuń pliki', 'k3e'); ?>" id="csv_media_remover"/>
-                            </div>
-                            <div style="display: block; padding-left: 5px;">
                                 <input type="hidden" name="Labels[csv_file]" value="<?php echo esc_attr($csv_file_input); ?>" id="csv-file" class="regular-text" />
                                 <input type='hidden' name="Labels[PDF]" value="<?= md5(rand(0, 255)) ?>"/>
-                                <button class="button button-primary"  type="submit">Wygeneruj</button>
+                                <input id="document_name" type="text" name="Labels[document_pdf_name]" value='<?= __('Etykiety ', 'k3e') . date('Y-m-d H:i:s') ?>'>
+                                <input id="document_comment" type="text" name="Labels[document_pdf_comment]" placeholder="<?= __('Komentarz', 'k3e') ?>">
+                                <button class="button button-primary" id="save" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Wygeneruj</button>
                             </div>
                         </form>
-                        <div>
-                            <h5><?= __('Wzór dokumentu', 'k3e') ?></h5>
-                            <a href="<?= plugin_dir_url(__FILE__) . '../../assets/etykiety.csv'; ?>" download><?= __('Wzór', 'k3e') ?></a>
-                        </div>
                     </div>
                     <hr>
                     <h2><?= __('Wygenerowane dokumenty', 'k3e') ?></h2>
-                    <div class="k3e_box">
+                    <div class="documents">
                         <?php
                         $args = array(
                             'post_type' => 'attachment',
@@ -98,31 +88,40 @@ if ($csv_file) {
 
                         $files = new WP_Query($args);
                         ?>
-                        <table id="labels" class="display" style="width:100%" data-counter="<?= $files->found_posts ?>">
+                        <table id="files" class="table display" style="width:100%" data-counter="<?= $files->found_posts ?>">
                             <thead>
                                 <tr>
-                                    <th style="text-align: left;"><?= __('Lp.', 'k3e') ?></th>
-                                    <th style="text-align: left;"><?= __('Dokument', 'k3e') ?></th>
+                                    <th style="text-align: left;  width:23px">Lp.</th>
+                                    <th style="text-align: left; width: 30%">Dokument</th>
+                                    <th style="text-align: left;">Komentarz</th>
+                                    <th style="text-align: left; width: 150px">Opcje</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php if ($files->have_posts()) { ?>
                                     <?php $i = 1; ?>
                                     <?php while ($files->have_posts()) : $files->the_post(); ?>
-                                        <tr>
+                                        <tr id="row_<?= get_the_ID() ?>" data-form="0" data-nonce='<?= wp_create_nonce('k3e-label-nonce') ?>'>
                                             <td><?= $i ?></td>
                                             <td><a href="<?= wp_get_attachment_url(get_the_ID()) ?>" style="text-decoration: none;"><?= get_the_title() ?></a></td>
+                                            <td id="comment_<?= get_the_ID() ?>"><?= (get_post_meta(get_the_ID(), '_document_comment', true)) ?></td>
+                                            <td>
+                                                <button data-id="<?= get_the_ID() ?>" class="button button-primary btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>       
+                                                <button data-id="<?= get_the_ID() ?>" class="button button-danger btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></button>       
+                                            </td>
                                         </tr>
                                         <?php $i++; ?>
                                     <?php endwhile; ?>
                                 <?php } else { ?>
-                                <td colspan="2" style="text-align: center;"><?= __('Brak wspisów', 'k3e') ?></td>
+                                <td colspan="4" style="text-align: center;"><?= __('Brak wspisów', 'k3e') ?></td>
                             <?php } ?>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th style="text-align: left;"><?= __('Lp.', 'k3e') ?></th>
                                     <th style="text-align: left;"><?= __('Dokument', 'k3e') ?></th>
+                                    <th style="text-align: left;"><?= __('Komentarz', 'k3e') ?></th>
+                                    <th style="text-align: left;"><?= __('Opcje', 'k3e') ?></th>
                                 </tr>
                             </tfoot>
                         </table>

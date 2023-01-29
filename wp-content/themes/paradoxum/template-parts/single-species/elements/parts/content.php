@@ -1,7 +1,7 @@
 <div class="col-lg-8 col-md-12">
     <?= get_the_content() ?>
 
-    <?php
+    <?php /*
     $post_images = explode(",", unserialize(get_post_meta(get_the_ID(), "species_photos", true)));
 
     if (count($post_images) > 0 && $post_images[0] != "") {
@@ -31,7 +31,7 @@
             <?= __('Niestety ale ten gatunek nie ma jeszcze zdjęć', 'k3e'); ?>
         </h3>
         <?php
-    }
+    }*/
     ?>
 
     <?php echo do_shortcode("[growlist-gallery id='".get_the_ID()."']"); ?>

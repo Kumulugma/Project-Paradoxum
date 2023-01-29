@@ -5,6 +5,7 @@
 use TCPDF;
 
 $filename = !empty(htmlentities($_POST['Labels']['document_pdf_name'])) ? htmlentities($_POST['Labels']['document_pdf_name']) : 'labels_' . date('Y-m-d_H:i:s');
+$comment = !empty(htmlentities($_POST['Labels']['document_pdf_comment'])) ? htmlentities($_POST['Labels']['document_pdf_comment']) : '';
 global $current_user;
 
 // create new PDF document
@@ -116,6 +117,8 @@ $attach_id = wp_insert_post($attr);
 
 add_post_meta($attach_id, '_wp_attached_file', substr(wp_upload_dir()['subdir'], 1) . '/' . sanitize_title($filename) . '.pdf');
 add_post_meta($attach_id, '_labels_document', $filename);
+add_post_meta($attach_id, '_document_comment', $comment);
+
 //print_r($attach_id); /* ID is successfuly given, but DOES not show up in Media. Even tried omoitting the $post_id, even though it is totallay valid */
 //============================================================+
 // END OF FILE

@@ -35,13 +35,19 @@ class UIClassLabelsAdmin {
              */
         }
 
+        UIClassLabelsAdmin::ajaxFunctions();
         UIClassLabelsAdmin::GenerateLabels();
 
         function labels_content() {
 
             wp_enqueue_media();
-            wp_enqueue_script('K3e-Labels', plugin_dir_url(__FILE__) . '../assets/k3e-labels.js', array('jquery'), '0.1');
+            wp_register_script('K3e-Labels', plugin_dir_url(__FILE__) . '../assets/k3e-labels.js', array('jquery'), '0.1');
+            wp_enqueue_style('K3e-Labels', plugin_dir_url(__FILE__) . '../assets/k3e-labels.css');
+            wp_enqueue_style('K3e-Buttons', plugin_dir_url(__FILE__) . '../assets/k3e-buttons.css');
+            wp_enqueue_style('K3e-Table', plugin_dir_url(__FILE__) . '../assets/k3e-table.css');
             wp_enqueue_style('Font-Awesome', plugin_dir_url(__FILE__) . "../node_modules/font-awesome/css/font-awesome.min.css");
+            wp_localize_script('K3e-Labels', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('ajax-nonce')));
+            wp_enqueue_script('K3e-Labels');
 
             include plugin_dir_path(__FILE__) . 'templates/labels.php';
         }
@@ -60,7 +66,7 @@ class UIClassLabelsAdmin {
                 $file_path = get_attached_file($_POST['Labels']['csv_file']);
 
                 $file = fopen($file_path, "r");
-                
+
                 $i = 0;
                 if ($file !== FALSE) {
                     while (($data = fgetcsv($file, 1000000, ";")) !== FALSE) {
@@ -69,7 +75,7 @@ class UIClassLabelsAdmin {
                         } else {
                             $label = [];
                             foreach ($cols as $k => $item) {
-                                $label[$cols[$k]] = iconv("Windows-1250", "UTF-8",$data[$k]);
+                                $label[$cols[$k]] = iconv("Windows-1250", "UTF-8", $data[$k]);
                             }
                             $labels[] = $label;
                         }
@@ -119,6 +125,95 @@ class UIClassLabelsAdmin {
             }
         }
 
+    }
+
+    public static function ajaxFunctions() {
+        add_action("wp_ajax_k3e_label_content", "k3e_label_content");
+        add_action("wp_ajax_nopriv_k3e_label_content", "k3e_label_no_logged");
+
+        function k3e_label_content() {
+
+            if (!wp_verify_nonce($_REQUEST['nonce'], "k3e-label-nonce")) {
+                exit("Brak dostępu");
+            }
+
+            $comment = get_post_meta($_REQUEST["id"], "_document_comment", true);
+            $newComment = update_post_meta($_REQUEST["id"], "_document_comment", $_REQUEST["comment"]);
+
+            if ($newComment === false) {
+                $result['type'] = "error";
+                $result['comment'] = $comment;
+            } else {
+                $result['type'] = "success";
+                $result['comment'] = $_REQUEST["comment"];
+            }
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                $result = json_encode($result);
+                echo $result;
+            } else {
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+            }
+
+            die();
+        }
+
+        function k3e_label_no_logged() {
+            header("Location: " . $_SERVER["HTTP_REFERER"]);
+            die();
+        }
+
+        add_action("wp_ajax_k3e_label_old_content", "k3e_label_old_content");
+        add_action("wp_ajax_nopriv_k3e_label_old_content", "k3e_label_no_logged");
+
+        function k3e_label_old_content() {
+
+            if (!wp_verify_nonce($_REQUEST['nonce'], "k3e-label-nonce")) {
+                exit("Brak dostępu");
+            }
+
+            $comment = get_post_meta($_REQUEST["id"], "_document_comment", true);
+
+            $result['type'] = "success";
+            $result['comment'] = $comment;
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                $result = json_encode($result);
+                echo $result;
+            } else {
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+            }
+
+            die();
+        }
+
+        add_action("wp_ajax_k3e_label_remove", "k3e_label_remove");
+        add_action("wp_ajax_nopriv_k3e_label_remove", "k3e_label_no_logged");
+
+        function k3e_label_remove() {
+
+            if (!wp_verify_nonce($_REQUEST['nonce'], "k3e-label-nonce")) {
+                exit("Brak dostępu");
+            }
+
+            $comment = delete_post_meta($_REQUEST["id"], "_labels_document");
+            
+            if ($comment === false) {
+                $result['type'] = "error";
+            } else {
+                $result['type'] = "success";
+            }
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                $result = json_encode($result);
+                echo $result;
+            } else {
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+            }
+
+            die();
+        }
+        
     }
 
 }

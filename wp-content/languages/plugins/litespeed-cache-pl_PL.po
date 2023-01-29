@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - LiteSpeed Cache - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-10-31 19:27:31+0000\n"
+"PO-Revision-Date: 2023-01-07 18:00:55+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,214 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.3\n"
 "Language: pl\n"
 "Project-Id-Version: Plugins - LiteSpeed Cache - Stable (latest release)\n"
+
+#: tpl/presets/standard.tpl.php:190
+msgid "Restore Settings"
+msgstr "Przywróć ustawienia"
+
+#: tpl/presets/standard.tpl.php:188
+msgid "This will restore the backup settings created %1$s before applying the %2$s preset. Any changes made since then will be lost. Do you want to continue?"
+msgstr "Przywróci to ustawienia zapasowe utworzone %1$s przed zastosowaniem presetu %2$s. Wszelkie zmiany dokonane od tego czasu zostaną utracone. Czy chcesz kontynuować?"
+
+#: tpl/presets/standard.tpl.php:184
+msgid "Backup created %1$s before applying the %2$s preset"
+msgstr "Backup utworzony %1$s przed zastosowaniem presetu %2$s"
+
+#: tpl/presets/standard.tpl.php:173
+msgid "Applied the %1$s preset %2$s"
+msgstr "Zastosowano preset %1$s %2$s"
+
+#: tpl/presets/standard.tpl.php:170
+msgid "Restored backup settings %1$s"
+msgstr "Przywrócono ustawienia z kopii zapasowej %1$s"
+
+#: tpl/presets/standard.tpl.php:168
+msgid "Error: Failed to apply the settings %1$s"
+msgstr "Błąd: Nie udało się zastosować ustawień %1$s"
+
+#: tpl/presets/standard.tpl.php:158
+msgid "History"
+msgstr "Historia"
+
+#: tpl/presets/standard.tpl.php:147
+msgid "unknown"
+msgstr "nieznany"
+
+#: tpl/presets/standard.tpl.php:128
+msgid "Apply Preset"
+msgstr "Zastosuj Preset"
+
+#: tpl/presets/standard.tpl.php:126
+msgid "This will back up your current settings and replace them with the %1$s preset settings. Do you want to continue?"
+msgstr "Spowoduje to wykonanie kopii zapasowej aktualnych ustawień i zastąpienie ich presetem %1$s. Czy chcesz kontynuować?"
+
+#: tpl/presets/standard.tpl.php:116
+msgid "Who should use this preset?"
+msgstr "Kto powinien używać tego presetu?"
+
+#: tpl/presets/standard.tpl.php:91
+msgid "Use an official LiteSpeed-designed Preset to configure your site in one click. Try no-risk caching essentials, extreme optimization, or something in between."
+msgstr "Użyj oficjalnego presetu zaprojektowanego przez LiteSpeed, aby skonfigurować swoją stronę jednym kliknięciem. Wypróbuj podstawowe buforowanie bez ryzyka, ekstremalną optymalizację lub coś pomiędzy."
+
+#: tpl/presets/standard.tpl.php:87
+msgid "LiteSpeed Cache Standard Presets"
+msgstr "Standardowe ustawienia LiteSpeed Cache"
+
+#: tpl/presets/standard.tpl.php:80
+msgid "A Domain Key is required to use this preset. Enables the maximum level of optimizations for improved page speed scores."
+msgstr "Do korzystania z tego presetu wymagany jest Klucz Domeny. Włącza maksymalny poziom optymalizacji w celu poprawy wyników szybkości strony."
+
+#: tpl/presets/standard.tpl.php:79
+msgid "This preset almost certainly will require testing and exclusions for some CSS, JS and Lazy Loaded images. Pay special attention to logos, or HTML-based slider images."
+msgstr "Ten preset prawie na pewno będzie wymagał testów i wykluczeń niektórych plików CSS, JS i Lazy Loadowanych obrazków. Zwróć szczególną uwagę na loga oraz obrazy sliderów oparte na HTML."
+
+#: tpl/presets/standard.tpl.php:74
+msgid "JS Delayed"
+msgstr "Opóźnij ładowanie JS"
+
+#: tpl/presets/standard.tpl.php:72
+msgid "Lazy Load for Images"
+msgstr "Leniwe ładowanie obrazków"
+
+#: tpl/presets/standard.tpl.php:71
+msgid "Everything in Aggressive, Plus"
+msgstr "Wszystko, co w Inwazyjnych, Plus"
+
+#: tpl/presets/standard.tpl.php:69
+msgid "Extreme"
+msgstr "Ekstremalne"
+
+#: tpl/presets/standard.tpl.php:63
+msgid "This preset might work out of the box for some websites, but be sure to test! Some CSS or JS exclusions may be necessary in Page Optimization > Tuning."
+msgstr "Ten preset może działać od ręki dla wielu stron, ale upewnij się, że go przetestujesz! Niektóre wykluczenia CSS lub JS mogą być konieczne w Optymalizacja Strony > Dostosowywanie."
+
+#: tpl/presets/standard.tpl.php:60
+msgid "Lazy Load for Iframes"
+msgstr "Leniwe ładowanie iframe'ów"
+
+#: tpl/presets/standard.tpl.php:59
+msgid "Removed Unused CSS for Users"
+msgstr "Usunięto nieużywany CSS u użytkowników"
+
+#: tpl/presets/standard.tpl.php:58
+msgid "Asynchronous CSS Loading with Critical CSS"
+msgstr "Asynchroniczne ładowanie CSS z krytycznym CSS"
+
+#: tpl/presets/standard.tpl.php:57
+msgid "CSS & JS Combine"
+msgstr "Połącz CSS & JS"
+
+#: tpl/presets/standard.tpl.php:56
+msgid "Everything in Advanced, Plus"
+msgstr "Wszystko, co w Zaawansowanych, Plus"
+
+#: tpl/presets/standard.tpl.php:54
+msgid "Aggressive"
+msgstr "Agresywna"
+
+#: tpl/presets/standard.tpl.php:49 tpl/presets/standard.tpl.php:64
+msgid "A Domain Key is required to use this preset. Includes many optimizations known to improve page speed scores."
+msgstr "Klucz domeny jest wymagany do użycia tego presetu. Zawiera wiele optymalizacji poprawiających prędkość ładowania strony."
+
+#: tpl/presets/standard.tpl.php:43
+msgid "Remove Query Strings from Static Files"
+msgstr "Usuń ciągi zapytań z plików statycznych"
+
+#: tpl/presets/standard.tpl.php:38
+msgid "CSS, JS and HTML Minification"
+msgstr "Minifikacja CSS, JS i HTML"
+
+#: tpl/presets/standard.tpl.php:37
+msgid "Guest Mode and Guest Optimization"
+msgstr "Tryb Gościa i optymalizacja dla Gości"
+
+#: tpl/presets/standard.tpl.php:36
+msgid "Everything in Basic, Plus"
+msgstr "Wszystko, co w Basic, Plus"
+
+#: tpl/presets/standard.tpl.php:34
+msgid "Advanced (Recommended)"
+msgstr "Zaawansowane (zalecane)"
+
+#: tpl/presets/standard.tpl.php:29
+msgid "A Domain Key is required to use this preset. Includes optimizations known to improve site score in page speed measurement tools."
+msgstr "Klucz domeny jest wymagany do użycia tego presetu. Zawiera optymalizacje poprawiające wynik witryny w narzędziach pomiaru prędkości strony."
+
+#: tpl/presets/standard.tpl.php:28
+msgid "This low-risk preset introduces basic optimizations for speed and user experience. Appropriate for enthusiastic beginners."
+msgstr "Ten preset o niskim stopniu ryzyka wprowadza podstawowe optymalizacje pod kątem szybkości i doświadczenia użytkownika. Odpowiedni dla początkujących entuzjastów."
+
+#: tpl/presets/standard.tpl.php:25
+msgid "Mobile Cache"
+msgstr "Cache dla urządzeń mobilnych"
+
+#: tpl/presets/standard.tpl.php:23
+msgid "Everything in Essentials, Plus"
+msgstr "Wszystko, co w Zasadniczych, Plus"
+
+#: tpl/presets/standard.tpl.php:16
+msgid "A Domain Key is not required to use this preset. Only basic caching features are enabled."
+msgstr "Klucz domeny nie jest wymagany do użycia tego presetu. Włączone są tylko podstawowe funkcje buforowania."
+
+#: tpl/presets/standard.tpl.php:15
+msgid "This no-risk preset is appropriate for all websites. Good for new users, simple websites, or cache-oriented development."
+msgstr "Jest to bezpieczny preset, odpowiedni dla wszystkich stron internetowych. Dobry dla nowicjuszy, prostych stron internetowych lub rozwoju ukierunkowanym na pamięć podręczną."
+
+#: tpl/presets/standard.tpl.php:11
+msgid "Higher TTL"
+msgstr "Wyższy TTL (Czas życia pakietu)"
+
+#: src/admin-display.cls.php:121
+msgid "Presets"
+msgstr "Presety"
+
+#: tpl/toolbox/log_viewer.tpl.php:93
+msgid "LiteSpeed Logs"
+msgstr "Logi LiteSpeed"
+
+#: tpl/toolbox/log_viewer.tpl.php:16
+msgid "Purge Log"
+msgstr "Dziennik oczyszczania"
+
+#: tpl/toolbox/settings-debug.tpl.php:166
+msgid "Prevent writing log entries that include listed strings."
+msgstr "Zapobiegaj zapisywaniu wpisów do dziennika, które zawierają wymienione ciągi znaków."
+
+#: tpl/toolbox/settings-debug.tpl.php:17
+msgid "View Site Before Cache"
+msgstr "Wyświetl stronę przed zastosowaniem cache"
+
+#: tpl/toolbox/settings-debug.tpl.php:13
+msgid "View Site Before Optimization"
+msgstr "Zobacz stronę przed optymalizacją"
+
+#: tpl/toolbox/settings-debug.tpl.php:9
+msgid "Debug Helpers"
+msgstr "Narzędzia pomocnicze do debugowania"
+
+#: tpl/page_optm/settings_vpi.tpl.php:91
+msgid "Enable Viewport Images auto generation cron."
+msgstr "Włącz automatyczne generowanie obrazów typu Viewport przez crona."
+
+#: tpl/general/settings.tpl.php:117
+msgid "Main domain"
+msgstr "Domena główna"
+
+#: tpl/cdn/auto_setup.tpl.php:121
+msgid "Manage DNS Zone"
+msgstr "Zarządzaj strefą DNS"
+
+#: tpl/cdn/auto_setup.tpl.php:117
+msgid "Manage CDN"
+msgstr "Zarządzaj CDNem"
+
+#: tpl/cdn/auto_setup.tpl.php:59
+msgid "In Progress"
+msgstr "W trakcie"
+
+#: tpl/cdn/auto_setup.tpl.php:50
+msgid "Paused"
+msgstr "Wstrzymano"
 
 #: tpl/toolbox/entry.tpl.php:14
 msgid "View .htaccess"
@@ -31,7 +239,7 @@ msgstr "Witryna nie jest zarejestrowana na QUIC.cloud."
 msgid "Click here to change."
 msgstr "Kliknij tutaj, aby zmienić."
 
-#: src/cloud.cls.php:898 src/error.cls.php:48
+#: src/cloud.cls.php:906 src/error.cls.php:48
 msgid "Click here to set."
 msgstr "Kliknij tutaj, aby ustawić."
 
@@ -139,19 +347,19 @@ msgstr "Określ maksymalny rozmiar pliku dziennika."
 msgid "To prevent filling up the disk, this setting should be OFF when everything is working."
 msgstr "Aby nie dopuścić do zapełnienia dysku, ustawienie to powinno być wyłączone, gdy wszystko działa."
 
-#: tpl/toolbox/beta_test.tpl.php:58
+#: tpl/toolbox/beta_test.tpl.php:59
 msgid "Press the %s button to stop beta testing and go back to the current release from the WordPress Plugin Directory."
 msgstr "Naciśnij przycisk %s, aby przerwać beta testy i wrócić do aktualnej wersji z WordPress Plugin Directory."
 
-#: tpl/toolbox/beta_test.tpl.php:42 tpl/toolbox/beta_test.tpl.php:58
+#: tpl/toolbox/beta_test.tpl.php:43 tpl/toolbox/beta_test.tpl.php:59
 msgid "Use latest WordPress release version"
 msgstr "Użyj najnowszej wersji z WordPress.org"
 
-#: tpl/toolbox/beta_test.tpl.php:42
+#: tpl/toolbox/beta_test.tpl.php:43
 msgid "OR"
 msgstr "LUB"
 
-#: tpl/toolbox/beta_test.tpl.php:33
+#: tpl/toolbox/beta_test.tpl.php:34
 msgid "Use this section to switch plugin versions. To beta test a GitHub commit, enter the commit URL in the field below."
 msgstr "Ta sekcja służy do przełączania wersji wtyczki. Aby przetestować beta GitHub commit, wpisz adres URL commit w polu poniżej."
 
@@ -377,7 +585,7 @@ msgstr "Opcjonalny drugi parametr może być użyty do określenia kontroli pami
 msgid "Store Gravatar locally."
 msgstr "Przechowuj Gravatar lokalnie."
 
-#: tpl/page_optm/settings_css.tpl.php:269
+#: tpl/page_optm/settings_css.tpl.php:271
 msgid "Default"
 msgstr "Domyślne"
 
@@ -421,26 +629,26 @@ msgstr "Zainstaluj"
 msgid "These options are only available with LiteSpeed Enterprise Web Server or QUIC.cloud CDN."
 msgstr "Te opcje są dostępne tylko z LiteSpeed Enterprise Web Server lub QUIC.cloud CDN."
 
-#: tpl/banner/score.php:68 tpl/dash/dashboard.tpl.php:260
+#: tpl/banner/score.php:68 tpl/dash/dashboard.tpl.php:261
 msgid "PageSpeed Score"
 msgstr "Wynik PageSpeed"
 
 #: tpl/banner/score.php:55 tpl/banner/score.php:94
-#: tpl/dash/dashboard.tpl.php:233 tpl/dash/dashboard.tpl.php:300
+#: tpl/dash/dashboard.tpl.php:234 tpl/dash/dashboard.tpl.php:301
 msgid "Improved by"
 msgstr "Usprawniony przez"
 
 #: tpl/banner/score.php:45 tpl/banner/score.php:84
-#: tpl/dash/dashboard.tpl.php:225 tpl/dash/dashboard.tpl.php:292
+#: tpl/dash/dashboard.tpl.php:226 tpl/dash/dashboard.tpl.php:293
 msgid "After"
 msgstr "Po"
 
 #: tpl/banner/score.php:34 tpl/banner/score.php:74
-#: tpl/dash/dashboard.tpl.php:216 tpl/dash/dashboard.tpl.php:284
+#: tpl/dash/dashboard.tpl.php:217 tpl/dash/dashboard.tpl.php:285
 msgid "Before"
 msgstr "Przed"
 
-#: tpl/banner/score.php:28 tpl/dash/dashboard.tpl.php:203
+#: tpl/banner/score.php:28 tpl/dash/dashboard.tpl.php:204
 msgid "Page Load Time"
 msgstr "Czas ładowania strony"
 
@@ -452,7 +660,7 @@ msgstr "Aby używać funkcji pamięci podręcznej musisz posiadać Web Server Li
 msgid "Preserve EXIF/XMP data"
 msgstr "Zachowaj dane EXIF/XMP"
 
-#: tpl/toolbox/beta_test.tpl.php:29
+#: tpl/toolbox/beta_test.tpl.php:30
 msgid "Try GitHub Version"
 msgstr "Wypróbuj wersję GitHub"
 
@@ -489,7 +697,7 @@ msgid "Turn On Auto Upgrade"
 msgstr "Włącz automatyczne aktualizacje"
 
 #: tpl/banner/new_version.php:69 tpl/banner/new_version_dev.tpl.php:24
-#: tpl/toolbox/beta_test.tpl.php:66
+#: tpl/toolbox/beta_test.tpl.php:67
 msgid "Upgrade"
 msgstr "Ulepszenie"
 
@@ -649,7 +857,7 @@ msgstr "Proszę włączyć LiteSpeed Cache w ustawieniach wtyczki."
 msgid "Please enable the LSCache Module at the server level, or ask your hosting provider."
 msgstr "Włącz moduł LSCache na poziomie serwera lub skontaktuj się z dostawcą usług hostingowych."
 
-#: src/cloud.cls.php:687 src/cloud.cls.php:708
+#: src/cloud.cls.php:695 src/cloud.cls.php:716
 msgid "Failed to request via WordPress"
 msgstr "Nie powiodło się zażądać przez WordPress-a"
 
@@ -685,11 +893,11 @@ msgstr "Obrazki zoptymalizowane poprzednio"
 msgid "LSCache caching functions on this page are currently unavailable!"
 msgstr "Funkcja pamięci podręcznej LSCache na tej stronie jest aktualnie niedostępna!"
 
-#: src/cloud.cls.php:798
+#: src/cloud.cls.php:806
 msgid "%1$s plugin version %2$s required for this action."
 msgstr "%1$s wersja wtyczki %2$s jest wymagana dla tej akcji."
 
-#: src/cloud.cls.php:736
+#: src/cloud.cls.php:744
 msgid "We are working hard to improve your online service experience. The service will be unavailable while we work. We apologize for any inconvenience."
 msgstr "Dokładamy wszelkich starań, aby poprawić jakość optymalizacji obrazku. Usługa będzie niedostępna podczas pracy. Przepraszamy za wszelkie niedogodności."
 
@@ -737,11 +945,11 @@ msgstr "Zoptymalizuj obrazki i zapisz kopie zapasowe oryginałów w tym samym fo
 msgid "Optimize Original Images"
 msgstr "Optymalizuj oryginalne obrazki"
 
-#: tpl/page_optm/settings_css.tpl.php:176
+#: tpl/page_optm/settings_css.tpl.php:177
 msgid "When this option is turned %s, it will also load Google Fonts asynchronously."
 msgstr "Jeśli ta opcje jest przestawiona %s, to załaduje, to też czcionki Google asynchronicznie."
 
-#: tpl/page_optm/settings_css.tpl.php:258
+#: tpl/page_optm/settings_css.tpl.php:260
 msgid "This will inline the asynchronous CSS library to avoid render blocking."
 msgstr "Spowoduje to wstawienie asynchronicznej biblioteki CSS w celu uniknięcia blokowania renderowania."
 
@@ -754,13 +962,13 @@ msgstr "Wewnętrzny CSS Async Lib"
 msgid "Run Queue Manually"
 msgstr "Uruchom kolejkę ręcznie"
 
-#: tpl/page_optm/settings_css.tpl.php:87 tpl/page_optm/settings_css.tpl.php:197
+#: tpl/page_optm/settings_css.tpl.php:87 tpl/page_optm/settings_css.tpl.php:198
 msgid "Last requested cost"
 msgstr "Koszt ostatniego żądania"
 
-#: tpl/dash/dashboard.tpl.php:447 tpl/dash/dashboard.tpl.php:480
-#: tpl/dash/dashboard.tpl.php:513 tpl/dash/dashboard.tpl.php:545
-#: tpl/page_optm/settings_css.tpl.php:84 tpl/page_optm/settings_css.tpl.php:194
+#: tpl/dash/dashboard.tpl.php:448 tpl/dash/dashboard.tpl.php:481
+#: tpl/dash/dashboard.tpl.php:514 tpl/dash/dashboard.tpl.php:546
+#: tpl/page_optm/settings_css.tpl.php:84 tpl/page_optm/settings_css.tpl.php:195
 #: tpl/page_optm/settings_media.tpl.php:170
 #: tpl/page_optm/settings_vpi.tpl.php:42
 msgid "Last generated"
@@ -770,7 +978,7 @@ msgstr "Ostatnio wygenerowany"
 msgid "If set to %s this is done in the foreground, which may slow down page load."
 msgstr "Jeśli ustawiono %s to działanie odbywa się na pierwszym planie, co może spowolnić ładowanie strony."
 
-#: tpl/page_optm/settings_css.tpl.php:171
+#: tpl/page_optm/settings_css.tpl.php:172
 msgid "Optimize CSS delivery."
 msgstr "Optymalizuj dostarczanie CSS"
 
@@ -778,7 +986,7 @@ msgstr "Optymalizuj dostarczanie CSS"
 msgid "This will delete all generated critical CSS files"
 msgstr "Ta opcja usunie wszystkie wygenerowane krytyczne pliki CSS"
 
-#: tpl/dash/dashboard.tpl.php:441 tpl/toolbox/purge.tpl.php:70
+#: tpl/dash/dashboard.tpl.php:442 tpl/toolbox/purge.tpl.php:70
 msgid "Critical CSS"
 msgstr "Krytyczny CSS"
 
@@ -972,7 +1180,7 @@ msgstr "Odwiedź forum pomocy LSCWP"
 msgid "Rate %s on %s"
 msgstr "Oceń %s na %s"
 
-#: src/lang.cls.php:25 tpl/dash/dashboard.tpl.php:372
+#: src/lang.cls.php:25 tpl/dash/dashboard.tpl.php:373
 msgid "Images notified to pull"
 msgstr "Obrazy zgłoszone do przesłania"
 
@@ -1020,15 +1228,15 @@ msgstr "uruchomione"
 msgid "Size"
 msgstr "Rozmiar"
 
-#: tpl/crawler/summary.tpl.php:99 tpl/dash/dashboard.tpl.php:598
+#: tpl/crawler/summary.tpl.php:99 tpl/dash/dashboard.tpl.php:599
 msgid "Ended reason"
 msgstr "Powód zakończenia"
 
-#: tpl/crawler/summary.tpl.php:92 tpl/dash/dashboard.tpl.php:591
+#: tpl/crawler/summary.tpl.php:92 tpl/dash/dashboard.tpl.php:592
 msgid "Last interval"
 msgstr "Ostatni interwał"
 
-#: tpl/crawler/summary.tpl.php:85 tpl/dash/dashboard.tpl.php:584
+#: tpl/crawler/summary.tpl.php:85 tpl/dash/dashboard.tpl.php:585
 msgid "Current crawler started at"
 msgstr "Aktualny robot indeksujący wystartował w"
 
@@ -1048,7 +1256,7 @@ msgstr "Ostatnie pełne uruchomienie wszystkich robotów indeksujących "
 msgid "Current sitemap crawl started at"
 msgstr "Aktualny robot indeksujący mapę strony wystartował w"
 
-#: tpl/cache/settings_inc.object.tpl.php:210
+#: tpl/cache/settings_inc.object.tpl.php:212
 msgid "Save transients in database when %1$s is %2$s."
 msgstr "Zapisuj dane tymczasowe w bazie danych tylko wtedy gdy %1$s wynosi %2$s."
 
@@ -1087,13 +1295,14 @@ msgid "Server variable(s) %s available to override this setting."
 msgstr "Zmienna(e) serwera %s dostępne do nadpisania tego ustawienia."
 
 #: src/admin-display.cls.php:1180 tpl/cache/settings-esi.tpl.php:95
-#: tpl/page_optm/settings_css.tpl.php:178
+#: tpl/page_optm/settings_css.tpl.php:179
 #: tpl/page_optm/settings_html.tpl.php:85
-#: tpl/page_optm/settings_media.tpl.php:235
+#: tpl/page_optm/settings_media.tpl.php:236
 #: tpl/page_optm/settings_media_exc.tpl.php:26
 #: tpl/page_optm/settings_tuning.tpl.php:35
 #: tpl/page_optm/settings_tuning.tpl.php:56
 #: tpl/page_optm/settings_tuning.tpl.php:77
+#: tpl/page_optm/settings_tuning.tpl.php:96
 #: tpl/page_optm/settings_tuning_css.tpl.php:24
 #: tpl/page_optm/settings_tuning_css.tpl.php:84
 #: tpl/toolbox/edit_htaccess.tpl.php:54 tpl/toolbox/edit_htaccess.tpl.php:71
@@ -1164,11 +1373,11 @@ msgstr "Ustawienia eksportu"
 msgid "Import / Export"
 msgstr "Import / Eksport"
 
-#: tpl/cache/settings_inc.object.tpl.php:184
+#: tpl/cache/settings_inc.object.tpl.php:186
 msgid "Use keep-alive connections to speed up cache operations."
 msgstr "Używaj połączeń keep-alive, aby przyspieszyć operacje w pamięci podręcznej."
 
-#: tpl/cache/settings_inc.object.tpl.php:144
+#: tpl/cache/settings_inc.object.tpl.php:146
 msgid "Database to be used"
 msgstr "Baza danych do wykorzystania"
 
@@ -1176,7 +1385,7 @@ msgstr "Baza danych do wykorzystania"
 msgid "Redis Database ID"
 msgstr "ID bazy danych REDIS"
 
-#: tpl/cache/settings_inc.object.tpl.php:131
+#: tpl/cache/settings_inc.object.tpl.php:133
 msgid "Specify the password used when connecting."
 msgstr "Określ hasło używane podczas łączenia."
 
@@ -1184,7 +1393,7 @@ msgstr "Określ hasło używane podczas łączenia."
 msgid "Password"
 msgstr "Hasło"
 
-#: tpl/cache/settings_inc.object.tpl.php:118
+#: tpl/cache/settings_inc.object.tpl.php:120
 msgid "Only available when %s is installed."
 msgstr "Dostępne tylko wtedy gdy %s jest zainstalowany."
 
@@ -1208,7 +1417,7 @@ msgstr "Pomyślnie wyczyszczono całą pamięć podręczną obiektów."
 msgid "Object cache is not enabled."
 msgstr "Pamięć podręczna obiektów nie jest włączona."
 
-#: tpl/cache/settings_inc.object.tpl.php:197
+#: tpl/cache/settings_inc.object.tpl.php:199
 msgid "Improve wp-admin speed through caching. (May encounter expired data)"
 msgstr "Popraw szybkość wp-admin poprzez buforowanie. (Może napotkać wygasłe dane)"
 
@@ -1220,7 +1429,7 @@ msgstr "Trwałe połączenie"
 msgid "Do Not Cache Groups"
 msgstr "Nie zapisuj w pamięci podręcznej grup"
 
-#: tpl/cache/settings_inc.object.tpl.php:157
+#: tpl/cache/settings_inc.object.tpl.php:159
 msgid "Groups cached at the network level."
 msgstr "Grupy zapisywane w pamięci podręcznej na poziomie sieci."
 
@@ -1242,7 +1451,7 @@ msgstr "Rozszerzenie %s "
 msgid "Status"
 msgstr "Stan"
 
-#: tpl/cache/settings_inc.object.tpl.php:105
+#: tpl/cache/settings_inc.object.tpl.php:107
 msgid "Default TTL for cached objects."
 msgstr "Domyślny TTL dla obiektów pamięci podręcznej"
 
@@ -1259,7 +1468,7 @@ msgid "Host"
 msgstr "Host"
 
 #: src/gui.cls.php:497 src/gui.cls.php:657 src/lang.cls.php:114
-#: tpl/dash/dashboard.tpl.php:421 tpl/toolbox/purge.tpl.php:52
+#: tpl/dash/dashboard.tpl.php:422 tpl/toolbox/purge.tpl.php:52
 msgid "Object Cache"
 msgstr "Pamięć podręczna obiektów"
 
@@ -1476,7 +1685,7 @@ msgstr "Ściągnij obrazki"
 msgid "This process is automatic."
 msgstr "Ten proces jest automatyczny"
 
-#: tpl/dash/dashboard.tpl.php:382 tpl/img_optm/summary.tpl.php:342
+#: tpl/dash/dashboard.tpl.php:383 tpl/img_optm/summary.tpl.php:342
 msgid "Last Request"
 msgstr "Ostatnie żądanie"
 
@@ -1538,7 +1747,7 @@ msgstr "Dowiedz się więcej"
 msgid "Images optimized and pulled"
 msgstr "Obrazy zoptymalizowane i wysłane"
 
-#: src/lang.cls.php:24 tpl/dash/dashboard.tpl.php:362
+#: src/lang.cls.php:24 tpl/dash/dashboard.tpl.php:363
 msgid "Images requested"
 msgstr "Zażądane obrazy"
 
@@ -1587,7 +1796,7 @@ msgstr "Wybierz role które będą wykluczone z pamięci podręcznej."
 msgid "Tuning"
 msgstr "Tuning"
 
-#: tpl/page_optm/settings_tuning.tpl.php:119
+#: tpl/page_optm/settings_tuning.tpl.php:123
 msgid "Selected roles will be excluded from all optimizations."
 msgstr "Wybrane role zostaną wykluczone ze wszystkich optymalizacji."
 
@@ -1635,10 +1844,6 @@ msgstr "LiteSpeed Cache Image Optimization"
 msgid "Image Optimization"
 msgstr "Optymalizacja obrazków"
 
-#: src/lang.cls.php:169
-msgid "JS Deferred Excludes"
-msgstr "Wykluczony nieuwzględniony JS"
-
 #: tpl/page_optm/settings_media.tpl.php:48
 msgid "For example, %s can be used for a transparent placeholder."
 msgstr "Na przykład %s można użyć do przezroczystego elementu zastępczego."
@@ -1668,6 +1873,7 @@ msgstr "Elementy z atrybutem %s w kodzie html zostaną wykluczone."
 #: tpl/page_optm/settings_tuning.tpl.php:36
 #: tpl/page_optm/settings_tuning.tpl.php:57
 #: tpl/page_optm/settings_tuning.tpl.php:78
+#: tpl/page_optm/settings_tuning.tpl.php:97
 #: tpl/page_optm/settings_tuning_css.tpl.php:25
 #: tpl/page_optm/settings_tuning_css.tpl.php:85
 msgid "Filter %s is supported."
@@ -1701,7 +1907,7 @@ msgstr "Przestań ładować emoji z wordpress.org. Zamiast tego będą się wyś
 msgid "Both full URLs and partial strings can be used."
 msgstr "Obydwa schematy URLi i cząstek mogą zostać użyte."
 
-#: tpl/page_optm/settings_media.tpl.php:213
+#: tpl/page_optm/settings_media.tpl.php:214
 msgid "Load iframes only when they enter the viewport."
 msgstr "Ładuj iframery tylko wtedy jeśli te wchodzą w port widoku."
 
@@ -1710,7 +1916,7 @@ msgid "Lazy Load Iframes"
 msgstr "Lazy Load Iframeów"
 
 #: tpl/page_optm/settings_media.tpl.php:28
-#: tpl/page_optm/settings_media.tpl.php:214
+#: tpl/page_optm/settings_media.tpl.php:215
 msgid "This can improve page loading time by reducing initial HTTP requests."
 msgstr "Może poprawić czas ładowania strony redukując wczesne zapytania HTTP."
 
@@ -1803,7 +2009,7 @@ msgstr "Zapobiegaj ładowaniu Google Fonts na wszystkich stronach."
 msgid "Remove Google Fonts"
 msgstr "Usuń czcionki Google"
 
-#: tpl/page_optm/settings_css.tpl.php:172
+#: tpl/page_optm/settings_css.tpl.php:173
 #: tpl/page_optm/settings_html.tpl.php:129 tpl/page_optm/settings_js.tpl.php:67
 msgid "This can improve your speed score in services like Pingdom, GTmetrix and PageSpeed."
 msgstr "To może zwiększyć szybkość twojej strony w serwisach takich jak Pingdom, GTmetrix i PageSpeed."
@@ -1828,7 +2034,7 @@ msgstr "Możesz włączyć zapisywanie przeglądarek w pamięci podręcznej w ad
 msgid "Browser caching stores static files locally in the user's browser. Turn on this setting to reduce repeated requests for static files."
 msgstr "Pamięć podręczna przeglądarki przechowuje statyczne pliki lokalnie w przeglądarce użytkownika. Włącz to ustawienie w celu zredukowania wielokrotnych żądań statycznych plików."
 
-#: src/lang.cls.php:91 tpl/dash/dashboard.tpl.php:422
+#: src/lang.cls.php:91 tpl/dash/dashboard.tpl.php:423
 #: tpl/presets/standard.tpl.php:12
 msgid "Browser Cache"
 msgstr "Pamięć podręczna przeglądarki"
@@ -1959,7 +2165,7 @@ msgstr "CDN"
 #: src/admin-display.cls.php:239 src/admin-display.cls.php:901
 #: src/admin-display.cls.php:928 src/admin-display.cls.php:980
 #: tpl/cache/settings-cache.tpl.php:19
-#: tpl/cache/settings_inc.object.tpl.php:210 tpl/cdn/settings.tpl.php:54
+#: tpl/cache/settings_inc.object.tpl.php:212 tpl/cdn/settings.tpl.php:54
 #: tpl/page_optm/settings_css.tpl.php:74 tpl/page_optm/settings_js.tpl.php:63
 #: tpl/page_optm/settings_media.tpl.php:162
 #: tpl/toolbox/settings-debug.tpl.php:46
@@ -1970,7 +2176,7 @@ msgstr "Wyłącz"
 #: src/admin-display.cls.php:929 src/admin-display.cls.php:980
 #: tpl/cache/settings-cache.tpl.php:19
 #: tpl/cache/settings_inc.cache_mobile.tpl.php:71 tpl/cdn/settings.tpl.php:49
-#: tpl/page_optm/settings_css.tpl.php:176
+#: tpl/page_optm/settings_css.tpl.php:177
 #: tpl/page_optm/settings_media.tpl.php:159
 #: tpl/toolbox/settings-debug.tpl.php:46
 msgid "ON"
@@ -2154,7 +2360,7 @@ msgid "If your site contains public content that certain user roles can see but 
 msgstr "Jeśli witryna zawiera treść publiczną, którą konkretne grupy mogą zobaczyć, ale inne grupy nie mogą, można określić grupę zmienną dla tych ról użytkownika. Na przykład określenie grupy odmiennej dla administratora pozwala na oddzielną stronę publiczną zapisaną w pamięci podręcznej, dostosowaną do administratorów (z liniami \"edytuj\" itp.), Podczas gdy wszystkie inne role użytkowników mają domyślną stronę publiczną."
 
 #: src/lang.cls.php:217 tpl/page_optm/settings_css.tpl.php:112
-#: tpl/page_optm/settings_css.tpl.php:222 tpl/page_optm/settings_vpi.tpl.php:67
+#: tpl/page_optm/settings_css.tpl.php:223 tpl/page_optm/settings_vpi.tpl.php:67
 msgid "Vary Group"
 msgstr "Grupa zmienna"
 
@@ -2377,7 +2583,7 @@ msgstr "Usuwanie stron według względnego lub pełnego adresu URL."
 #: tpl/cache/settings-esi.tpl.php:35 tpl/cdn/manage.tpl.php:21
 #: tpl/crawler/summary.tpl.php:48 tpl/inc/check_cache_disabled.php:31
 #: tpl/inc/check_if_network_disable_all.php:18
-#: tpl/page_optm/settings_css.tpl.php:61 tpl/page_optm/settings_css.tpl.php:167
+#: tpl/page_optm/settings_css.tpl.php:61 tpl/page_optm/settings_css.tpl.php:168
 #: tpl/page_optm/settings_localization.tpl.php:11
 msgid "WARNING"
 msgstr "OSTRZEŻENIE"
@@ -2406,7 +2612,7 @@ msgstr "Nie mogę utworzyć folderu: %1$s. Błąd: %2$s"
 msgid "Folder does not exist: %s"
 msgstr "Folder: %s nie istnieje"
 
-#: src/core.cls.php:324
+#: src/core.cls.php:336
 msgid "Notified LiteSpeed Web Server to purge the list."
 msgstr "Poinformowano Serwer LiteSpeed o usunięciu listy."
 
@@ -2654,7 +2860,7 @@ msgstr "e.g. Użyj %s lub %s."
 msgid "Purge pages by category name - e.g. %2$s should be used for the URL %1$s."
 msgstr "Wyczyść strony używając nazwy kategorii - e.g. %2$s powinno zostać użyte dla adresu URL %1$s."
 
-#: src/core.cls.php:319
+#: src/core.cls.php:331
 msgid "Notified LiteSpeed Web Server to purge everything."
 msgstr "Powiadomiono serwer LiteSpeed aby wyczyścił wszystko."
 
@@ -3036,7 +3242,7 @@ msgid "Purge Front Page"
 msgstr "Wyczyść stronę główną"
 
 #: tpl/page_optm/settings_localization.tpl.php:127
-#: tpl/toolbox/beta_test.tpl.php:34
+#: tpl/toolbox/beta_test.tpl.php:35
 msgid "Example"
 msgstr "Przykład"
 
@@ -3113,7 +3319,7 @@ msgstr "Poziom debugowania"
 #: tpl/general/settings.tpl.php:83 tpl/general/settings.tpl.php:94
 #: tpl/general/settings.tpl.php:106 tpl/general/settings.tpl.php:183
 #: tpl/general/settings.tpl.php:189 tpl/general/settings.tpl.php:195
-#: tpl/general/settings.tpl.php:212 tpl/page_optm/settings_media.tpl.php:231
+#: tpl/general/settings.tpl.php:212 tpl/page_optm/settings_media.tpl.php:232
 #: tpl/page_optm/settings_vpi.tpl.php:32
 msgid "Notice"
 msgstr "Powiadomienie"
@@ -3166,7 +3372,7 @@ msgstr "Zasady automatycznego oczyszczania dla publikowania / aktualizacji"
 msgid "Default Public Cache TTL"
 msgstr "Domyślny Publiczny Cache TTL"
 
-#: src/admin-display.cls.php:1012 tpl/cache/settings_inc.object.tpl.php:103
+#: src/admin-display.cls.php:1012 tpl/cache/settings_inc.object.tpl.php:105
 #: tpl/crawler/settings-general.tpl.php:60
 #: tpl/crawler/settings-general.tpl.php:74
 #: tpl/crawler/settings-general.tpl.php:89 tpl/esi_widget_edit.php:70
