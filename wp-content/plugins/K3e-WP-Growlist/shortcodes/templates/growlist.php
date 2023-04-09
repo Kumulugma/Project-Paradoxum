@@ -38,8 +38,8 @@ $tab = isset($_GET['tab']) ? $_GET['tab'] : "";
             'meta_query' => array(
                 array(
                     'key' => 'species_state',
-                    'value' => '1',
-                    'compare' => '='
+                    'value' => ['1', '2', '3', '4', '5'],
+                    'compare' => 'IN'
                 )
             )
         );

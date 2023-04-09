@@ -87,10 +87,12 @@ class UIClassLabelsAdmin {
 
                 $k = 0;
                 $j = 0;
+
                 foreach ($labels as $label) {
                     while ($label['AMOUNT']) {
 
                         $label = $label + ['SIZE' => $size];
+                        $label = $label + ['HEIGHT' => (($size == 3) ? 240 : 120)];
                         $result[$k][] = $label;
                         if ($j % (($size == 1) ? 8 : 4) == (($size == 1) ? 7 : 3)) {
                             $k++;
@@ -100,7 +102,7 @@ class UIClassLabelsAdmin {
                     }
                 }
             }
-            update_option('_pdf_labels', json_encode($result, JSON_UNESCAPED_UNICODE));
+            update_option('_pdf_labels', json_encode($result));
             include plugin_dir_path(__FILE__) . 'templates/labels/document_pdf.php';
 
             wp_redirect('admin.php?page=' . $_GET['page']);

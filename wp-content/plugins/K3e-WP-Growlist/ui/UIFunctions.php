@@ -18,7 +18,7 @@ function manuallyPackPhotos() {
 
     $limit = 30;
     $counter = 0;
-   
+
     $args = array(
         'post_type' => 'photo_album',
         'order' => 'DESC',
@@ -67,10 +67,9 @@ function manuallyPackPhotos() {
                                 $destination_image = $source_image;
                                 $destination_extension = substr($destination_image, -3);
                                 $destination_image = substr($destination_image, 0, -4) . "-package." . $destination_extension;
-                                echo " test ";
-                                echo fileComplete($source_image);
+                                
                                 if ($image_sizes[0] > 1900 && (fileComplete($source_image) || $destination_extension == 'png')) {
-                                    echo " start ";
+                                   
                                     copy($source_image, $destination_image);
 
                                     /* Create some objects */
@@ -226,3 +225,48 @@ function fileComplete($file_path) {
     }
     return true;
 }
+
+function speciesStatus(string $status) {
+    switch ($status) {
+        case 1:
+            return __('Transport', 'k3e');
+        case 2:
+            return __('Wysiane', 'k3e');
+        case 3:
+            return __('Rośnie', 'k3e');
+        case 4:
+            return __('Oczekuje', 'k3e');
+        case 5:
+            return __('Zimuje', 'k3e');
+        case 6:
+            return __('Stracone', 'k3e');
+              default:
+        return __(' ','k3e');
+    }
+}
+
+function speciesBadge(string $status) {
+    switch ($status) {
+        case 1:
+            return 'primary';
+        case 2:
+            return 'secondary';
+        case 3:
+            return 'success';
+        case 4:
+            return 'warning';
+        case 5:
+            return 'info';
+        case 6:
+            return 'danger';
+        default: 
+            return 'none';
+    }
+}
+
+
+
+
+
+
+

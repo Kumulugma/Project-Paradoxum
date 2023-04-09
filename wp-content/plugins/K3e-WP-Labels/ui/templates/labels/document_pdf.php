@@ -69,18 +69,35 @@ $labels = json_decode(get_option('_pdf_labels'));
 
 $j = 0;
 $sum = 0;
+$height = 0;
 foreach ($labels as $rows) {
     $content .= '<tr>';
     foreach ($rows as $cols) {
-        $content .= '<td style="width: ' . ( $cols->SIZE == '1' ? 76 : 152 ) . 'px; height: 114px; text-align: center;">';
-        if(!empty($cols->LINE1)) {
-        $content .= '<span style="font-weight: bold; font-variant: small-caps; font-size: 12px;">' . $cols->LINE1 . '</span><br>_______________<br>';
-        }
+        $array = get_object_vars($cols);
+        $content .= '<td style="width: ' . ( $cols->SIZE == '1' ? 76 : 152 ) . 'px; height: ' . $cols->HEIGHT . 'px; text-align: center;">';
+        $line1 = reset($array);
+        if ($line1 != "") {
+            if($cols->SIZE == '1') { 
+                $content .= '<span style="font-weight: bold; font-variant: small-caps; font-size: 9px;">' . $line1 . '</span><br>_______________<br>';
+            } else {
+            $content .= '<span style="font-weight: bold; font-variant: small-caps; font-size: 12px;">' . $line1 . '</span><br>_______________<br>';
+            }
+        } 
+        
         $content .= $cols->LINE2 . '<br>';
         $content .= '<small>' . $cols->LINE3 . '</small>';
         $content .= '</td>';
     }
+    $height += $cols->HEIGHT;
+
     $content .= '</tr>';
+    if ($height >= 720) {
+        $height = 0;
+        $content .= '<tr>';
+        $content .= '<td style="height: ' . ($cols->SIZE == '3' ? 130 : 10) . 'px; text-align: center;">';
+        $content .= '</td>';
+        $content .= '</tr>';
+    }
 }
 
 $content .= '</table>';

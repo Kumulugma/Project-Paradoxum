@@ -6,8 +6,8 @@ function species() {
 	$labels = array(
 		'name'                  => _x( 'Okazy', 'Post Type General Name', 'k3e' ),
 		'singular_name'         => _x( 'Okaz', 'Post Type Singular Name', 'k3e' ),
-		'menu_name'             => __( 'Okazy', 'k3e' ),
-		'name_admin_bar'        => __( 'Okazy', 'k3e' ),
+		'menu_name'             => __( 'Kolekcja', 'k3e' ),
+		'name_admin_bar'        => __( 'Kolekcja', 'k3e' ),
 		'archives'              => __( 'Archiwum okazów', 'k3e' ),
 		'attributes'            => __( 'Atrybuty okazu', 'k3e' ),
 		'parent_item_colon'     => __( 'Okaz nadrzędny:', 'k3e' ),

@@ -1,0 +1,54 @@
+.badge{
+    width: 8px;
+    display: inline-block;
+    height: 8px;
+}
+
+.badge-primary{
+    background-color: #35b7dc !important;
+    border-radius: 50% !important;
+    border: 1px solid #3a87d4 !important;
+    box-shadow: 8px 8px 24px -1px rgba(66, 68, 90, 1);
+}
+
+.badge-secondary{
+    background-color: #dccb35 !important;
+    border-radius: 50% !important;
+    border: 1px solid #faf06f !important;
+    box-shadow: 8px 8px 24px -1px rgba(66, 68, 90, 1);
+}
+
+.badge-success{
+    background-color: #71dc35 !important;
+    border-radius: 50% !important;
+    border: 1px solid #60cf66 !important;
+    box-shadow: 8px 8px 24px -1px rgba(66, 68, 90, 1);
+}
+
+.badge-warning{
+    background-color: #dc9e35 !important;
+    border-radius: 50% !important;
+    border: 1px solid #e2bb79 !important;
+    box-shadow: 8px 8px 24px -1px rgba(66, 68, 90, 1);
+}
+
+.badge-info{
+    background-color: #35cbdc !important;
+    border-radius: 50% !important;
+    border: 1px solid #85d2db !important;
+    box-shadow: 8px 8px 24px -1px rgba(66, 68, 90, 1);
+}
+
+.badge-danger{
+    background-color: #dc3545 !important;
+    border-radius: 50% !important;
+    border: 1px solid #dee2e6 !important;
+    box-shadow: 8px 8px 24px -1px rgba(66, 68, 90, 1);
+}
+
+.badge-none{
+    background-color: transparent !important;
+    border-radius: 50% !important;
+    border: 1px solid grey !important;
+    box-shadow: 8px 8px 24px -1px rgba(66, 68, 90, 1);
+}

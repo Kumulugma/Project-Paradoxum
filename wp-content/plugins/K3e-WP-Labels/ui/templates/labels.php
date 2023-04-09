@@ -44,6 +44,13 @@ if ($csv_file) {
                                         <?= __('Średnie', 'k3e') ?>
                                     </label>
                                 </div>
+                                <div class="box">
+                                    <label for="k3e_labels_large">
+                                        <img src="<?= plugin_dir_url(__FILE__) . '../../assets/etykiety_1.png'; ?>" width="67px" alt="<?= __("Duże ikony", "k3e") ?>" for="k3e_labels_large"/>
+                                        <input type="radio" id="k3e_labels_large" name="Labels[labels_size]" value="3">
+                                        <?= __('Duże', 'k3e') ?>
+                                    </label>
+                                </div>
                             </div>
                             <div class="box">
                                 <div id="upload" data-default='fa fa-upload'>

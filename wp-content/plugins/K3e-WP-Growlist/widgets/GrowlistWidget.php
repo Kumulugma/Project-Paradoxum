@@ -6,6 +6,8 @@ class GrowlistWidget {
 
         self::SownDashboardBox();
         self::InFlightDashboardBox();
+        self::LostDashboardBox();
+        self::WaitingDashboardBox();
     }
 
     public static function SownDashboardBox() {
@@ -29,11 +31,42 @@ class GrowlistWidget {
         function in_flight_dashboard_widget() {
             global $wp_meta_boxes;
 
-            wp_add_dashboard_widget('in_flight_help_widget', 'W drodze', 'in_flight_dashboard');
+            wp_add_dashboard_widget('in_flight_help_widget', 'Transport', 'in_flight_dashboard');
         }
 
         function in_flight_dashboard() {
             include plugin_dir_path(__FILE__) . 'templates/in_flight.php';
+        }
+
+    }
+    
+    
+    public static function WaitingDashboardBox() {
+        add_action('wp_dashboard_setup', 'waiting_dashboard_widget');
+
+        function waiting_dashboard_widget() {
+            global $wp_meta_boxes;
+
+            wp_add_dashboard_widget('waiting_help_widget', 'Oczekuje', 'waiting_dashboard');
+        }
+
+        function waiting_dashboard() {
+            include plugin_dir_path(__FILE__) . 'templates/waiting.php';
+        }
+
+    }    
+    
+    public static function LostDashboardBox() {
+        add_action('wp_dashboard_setup', 'lost_dashboard_widget');
+
+        function lost_dashboard_widget() {
+            global $wp_meta_boxes;
+
+            wp_add_dashboard_widget('lost_help_widget', 'Stracone', 'lost_dashboard');
+        }
+
+        function lost_dashboard() {
+            include plugin_dir_path(__FILE__) . 'templates/lost.php';
         }
 
     }

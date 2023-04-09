@@ -6,6 +6,7 @@ wp_nonce_field(basename(__FILE__), "meta-box-nonce");
 <?php $species_comment = get_post_meta($object->ID, "species_comment", true); ?>
 <?php $species_name = get_post_meta($object->ID, "species_name", true); ?>
 <?php $species_own = get_post_meta($object->ID, "species_own", true); ?>
+<?php $species_passport = get_post_meta($object->ID, "species_passport", true); ?>
 
 <div class="k3e_box">
     <p class="meta-options k3e_field">
@@ -17,11 +18,14 @@ wp_nonce_field(basename(__FILE__), "meta-box-nonce");
         <input id="k3e_species_code" type="text" name="species_code" value='<?= $species_code ?>'>
     </p>
     <p class="meta-options k3e_field">
-        <label for="k3e_species_state"><?= __('Status', 'k3e') ?></label>
+        <label for="k3e_species_state"><?= __('Status', 'k3e') ?> <span class="badge badge-<?= speciesBadge($species_state) ?>"></span></label>
         <select name="species_state" id="k3e_species_state">
-            <option value="1" <?=$species_state == '1' ? 'selected' : ''?>><?=__('Ok','k3e')?></option>
-            <option value="2" <?=$species_state == '2' ? 'selected' : ''?>><?=__('Wysiew','k3e')?></option>
-            <option value="4" <?=$species_state == '4' ? 'selected' : ''?>><?=__('Nie przetrwał','k3e')?></option>
+            <option value="1" <?=$species_state == '1' ? 'selected' : ''?>><?=__('Transport','k3e')?></option>
+            <option value="2" <?=$species_state == '2' ? 'selected' : ''?>><?=__('Wysiane','k3e')?></option>
+            <option value="3" <?=$species_state == '3' ? 'selected' : ''?>><?=__('Rośnie','k3e')?></option>
+            <option value="4" <?=$species_state == '4' ? 'selected' : ''?>><?=__('Oczekuje','k3e')?></option>
+            <option value="5" <?=$species_state == '5' ? 'selected' : ''?>><?=__('Zimuje','k3e')?></option>
+            <option value="6" <?=$species_state == '6' ? 'selected' : ''?>><?=__('Stracone','k3e')?></option>
         </select>
     </p>
     <p class="meta-options k3e_field">
@@ -31,6 +35,10 @@ wp_nonce_field(basename(__FILE__), "meta-box-nonce");
     <p class="meta-options k3e_field">
         <label for="k3e_species_own"><?= __('Unikat', 'k3e') ?></label>
         <input id="k3e_species_own" type="checkbox" name="species_own" value='1' <?= ($species_own) ? 'checked' : '' ?>>
+    </p>
+    <p class="meta-options k3e_field">
+        <label for="k3e_species_passport"><?= __('Paszport roślinny', 'k3e') ?></label>
+        <input id="k3e_species_passport" type="text" name="species_passport" value='<?= $species_passport ?>'>
     </p>
 </div>
 

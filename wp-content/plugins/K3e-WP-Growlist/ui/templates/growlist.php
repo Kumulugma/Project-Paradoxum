@@ -26,7 +26,6 @@
                                 <th style="text-align: left;"><?= __('Nazwa', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Grupa', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Stan', 'k3e') ?></th>
-                                <th style="text-align: left;"><?= __('Komentarz', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Pochodzenie', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Rok', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Zdjęcia', 'k3e') ?></th>
@@ -46,21 +45,10 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <?php
-                                            switch (get_post_meta(get_the_ID(), 'species_state', true)) {
-                                                case 1:
-                                                    echo __('Ok', 'k3e');
-                                                    break;
-                                                case 2:
-                                                    echo __('Wysiew', 'k3e');
-                                                    break;
-                                                case 4:
-                                                    echo __('Nie przetrwał', 'k3e');
-                                                    break;
-                                            }
-                                            ?>
+                                            <?php echo speciesStatus(get_post_meta(get_the_ID(), 'species_state', true)); ?>
+                                            <span class="badge badge-<?= speciesBadge(get_post_meta(get_the_ID(), 'species_state', true)) ?>">
+                                            </span>
                                         </td>
-                                        <td><?= get_post_meta(get_the_ID(), 'species_comment', true) ?></td>
                                         <td>
                                             <?php foreach (get_the_terms(get_the_ID(), 'provider') as $provider) { ?>
                                                 <?= $provider->name ?> 
@@ -92,7 +80,6 @@
                                 <th style="text-align: left;"><?= __('Nazwa', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Grupa', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Stan', 'k3e') ?></th>
-                                <th style="text-align: left;"><?= __('Komentarz', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Pochodzenie', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Rok', 'k3e') ?></th>
                                 <th style="text-align: left;"><?= __('Zdjęcia', 'k3e') ?></th>

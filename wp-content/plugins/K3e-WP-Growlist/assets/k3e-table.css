@@ -2,6 +2,7 @@
     border: 1px solid #ccc;
     border-collapse: collapse;
     border-spacing: 0;
+    width: 100%;
 }
 .table th {
     background-color: #adadad;
@@ -22,4 +23,16 @@
 
 .table tr:hover {
     background-color: #d3d3d3;
+}
+
+.done{
+    border: 1px solid #26682e;
+}
+
+.table .actions {
+    text-align: right;
+}
+
+.table .panel {
+    background-color: #cfcfcf;
 }

@@ -23,9 +23,12 @@
                                     <div class="select">
                                         <select name="Growlist[species_status]">
                                             <option value="-1"><?= __('Wszystkie', 'k3e') ?></option>
-                                            <option value="1"><?= __('Ok', 'k3e') ?></option>
-                                            <option value="2"><?= __('Wysiew', 'k3e') ?></option>
-                                            <option value="3"><?= __('Nie przetrwał', 'k3e') ?></option>
+                                            <option value="1"><?= __('Transport', 'k3e') ?></option>
+                                            <option value="2"><?= __('Wysiane', 'k3e') ?></option>
+                                            <option value="3"><?= __('Rośnie', 'k3e') ?></option>
+                                            <option value="4"><?= __('Oczekuje', 'k3e') ?></option>
+                                            <option value="5"><?= __('Zimuje', 'k3e') ?></option>
+                                            <option value="6"><?= __('Stracone', 'k3e') ?></option>
                                         </select>
                                     </div>
                                     <div class="save">
